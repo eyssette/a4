@@ -6,7 +6,7 @@
 		{
 			"label": "Create A4 page",
 			"type": "shell",
-			"command": "pandoc ${file} -o ${fileBasenameNoExtension}.html -c assets/style.css -H assets/pandoc-add-script.html -s",
+			"command": "pandoc ${file} -o ${fileBasenameNoExtension}.html -s --template=template.html",
 			"group": {
 				"kind": "build",
 				"isDefault": true
