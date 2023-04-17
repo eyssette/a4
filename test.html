@@ -17,20 +17,7 @@
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
-  <script>
-  var nPages = 1;
-  let fontSize = 200;
-  function adjustFontSize() {
-  	let contentHeight = document.body.offsetHeight;
-  	while (contentHeight > 1100 * nPages) {
-  		fontSize = fontSize - 0.5;
-  		document.body.style.fontSize = fontSize + "px";
-  		contentHeight = document.body.offsetHeight;
-  	}
-  }
-  window.addEventListener("load", adjustFontSize);
-  window.addEventListener("resize", adjustFontSize);
-  </script>
+  <script src="assets/script.js"></script>
 </head>
 <body>
 <h1 id="titre">Titre</h1>
