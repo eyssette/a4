@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Page à imprimer en A4</title>
+	<style type="text/css">
+		body {
+			font-size: 200px; /* On commence avec une police de taille très élevée pour la réduire ensuite petit à petit */
+			width:21cm;
+			margin:10px;
+			padding:0;
+		}
+		@media print {
+			@page {
+				size: A4;
+				margin: 10px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<h1>Titre</h1>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel fringilla venenatis, nibh nibh volutpat orci, vitae pellentesque ipsum nunc id massa. Donec tristique ex eu sapien vulputate, vitae convallis mi pretium. Aliquam bibendum semper tellus nec rutrum.</p>
+	<h1>Titre</h1>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel fringilla venenatis, nibh nibh volutpat orci, vitae pellentesque ipsum nunc id massa. Donec tristique ex eu sapien vulputate, vitae convallis mi pretium. Aliquam bibendum semper tellus nec rutrum.</p>
+	<h1>Titre</h1>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel fringilla venenatis, nibh nibh volutpat orci, vitae pellentesque ipsum nunc id massa. Donec tristique ex eu sapien vulputate, vitae convallis mi pretium. Aliquam bibendum semper tellus nec rutrum.</p>
+	<h1>Titre</h1>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel fringilla venenatis, nibh nibh volutpat orci, vitae pellentesque ipsum nunc id massa. Donec tristique ex eu sapien vulputate, vitae convallis mi pretium. Aliquam bibendum semper tellus nec rutrum.</p>
+		<script>
+			var nPages=1
+			let fontSize=200;
+			function adjustFontSize() {
+				let contentHeight = document.body.offsetHeight;
+				while (contentHeight > 1100*nPages) {
+					fontSize = fontSize-0.5;
+					document.body.style.fontSize = fontSize + 'px';
+					contentHeight = document.body.offsetHeight;
+				}
+			}
+			window.addEventListener('load', adjustFontSize);
+			window.addEventListener('resize', adjustFontSize);
+		</script>
+</body>
+</body>
+</html>
