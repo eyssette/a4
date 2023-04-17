@@ -1,0 +1,16 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Create A4 page",
+			"type": "shell",
+			"command": "pandoc ${file} -o ${fileBasenameNoExtension}.html -c style.css -H pandoc-script-tag-start.txt -H script.js -H pandoc-script-tag-end.txt -s",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
+}
