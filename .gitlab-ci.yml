@@ -3,8 +3,9 @@ stages:
   - deploy
 
 build:
-  image: pandoc/minimal
-  entrypoint: ["/bin/sh", "-c"]
+  image:
+    name: pandoc/minimal
+    entrypoint: ["/bin/sh", "-c"]
   stage: build
   script:
     - |+
