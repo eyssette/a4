@@ -5,14 +5,14 @@ deploy:
   script:
     - mkdir .public
     - cp -r * .public
-    - mv .public public
     - |+
       for f in $(find . -type f -name '*.md' ! -name 'README.md'); do
         filename=$(basename "$f" .md);
         if [ ! -f "$filename.html" ]; then
-          pandoc -f markdown -t html "$f" -o "public/$filename.html" -s --template=template.html;
+          pandoc -f markdown -t html "$f" -o ".public/$filename.html" -s --template=template.html;
         fi
       done
+    - mv .public public
     - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)$' -exec gzip -f -k {} \;
     - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)$' -exec brotli -f -k {} \;
   artifacts:
