@@ -8,10 +8,12 @@ build:
   stage: build
   script:
     - |+
+      pandoc --version
       for f in $(find . -type f -name '*.md' ! -name 'README.md'); do
-        filename=$(basename "$f" .md)
+        filename=$(basename "$f" .md);
+        echo filename;
         if [ ! -f "$filename.html" ]; then
-          pandoc -f markdown -t html "$f" -o "$filename.html" -s --template=template.html
+          pandoc -f markdown -t html "$f" -o "$filename.html" -s --template=template.html;
         fi
       done
 
