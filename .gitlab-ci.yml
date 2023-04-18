@@ -4,6 +4,7 @@ stages:
 
 build:
   image: pandoc/minimal
+  entrypoint: ["/bin/sh", "-c"]
   stage: build
   script:
     - |+
