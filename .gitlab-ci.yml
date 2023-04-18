@@ -1,4 +1,20 @@
-pages:
+stages:
+  - build
+  - deploy
+
+build:
+  image: alpine
+  stage: build
+  script:
+    - apk add --no-cache pandoc
+    - for f in *.md; do
+        if [ ! -f "${f%}.html" ]; then
+          pandoc "$f" -o "${f%}.html"
+        fi
+      done
+
+deploy:
+  stage: deploy
   script:
     - mkdir .public
     - cp -r * .public
