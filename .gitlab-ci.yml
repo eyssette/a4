@@ -3,14 +3,14 @@ deploy:
     name: pandoc/core
     entrypoint: ["/bin/sh", "-c"]
   script:
+    - mkdir .public
     - |+
       for f in $(find . -type f -name '*.md' ! -name 'README.md'); do
         filename=$(basename "$f" .md);
         if [ ! -f "$filename.html" ]; then
-          pandoc -f markdown -t html "$f" -o "$filename.html" -s --template=template.html;
+          pandoc -f markdown -t html "$f" -o ".public/$filename.html" -s --template=template.html;
         fi
       done
-    - mkdir .public
     - cp -r * .public
     - mv .public public
     - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)$' -exec gzip -f -k {} \;
