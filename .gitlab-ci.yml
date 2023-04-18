@@ -1,4 +1,4 @@
-deploy:
+pages:
   image:
     name: pandoc/core
     entrypoint: ["/bin/sh", "-c"]
