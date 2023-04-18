@@ -5,6 +5,7 @@ stages:
 build:
   image:
     name: pandoc/minimal
+    entrypoint: [""]
   stage: build
   script:
     - |+
