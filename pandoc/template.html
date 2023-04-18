@@ -34,8 +34,8 @@
       body{font-size:200px;width:21cm;margin:10px;padding:0}@media print{@page{size:A4;margin:10px}}
 			$if(columns)$body{columns:$columns$}$endif$
 			$if(colonnes)$body{columns:$colonnes$}$endif$
-			$if(paysage)$body{width:29.7cm}@media print{@page{size:A4 landscape;}}$endif$
-      $if(landscape)$body{width:29.7cm}@media print{@page{size:A4 landscape;}}$endif$
+			$if(paysage)$body{width:29.7cm!important}@media print{@page{size:A4 landscape!important;}}$endif$
+      $if(landscape)$body{width:29.7cm!important}@media print{@page{size:A4 landscape!important;}}$endif$
 		</style>
 		<script>
       $if(pages)$ let nPages = $pages$; $else$ let nPages = 1; $endif$
