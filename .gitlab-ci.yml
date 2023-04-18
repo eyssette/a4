@@ -3,9 +3,10 @@ stages:
   - deploy
 
 build:
+  stage: build
   image:
     name: pandoc/core
-  stage: build
+    entrypoint: ["/bin/sh", "-c"]
   script:
     - |+
       pandoc --version
