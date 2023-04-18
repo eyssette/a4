@@ -11,6 +11,13 @@
 				"kind": "build",
 				"isDefault": true
 			}
+		},
+		{
+			"label": "Open in Browser",
+			"type": "shell",
+			"linux": {"command": "brave ${file}"},
+			"osx": {"command": "open -a Brave\\ Browser ${file}"},
+			"group": "test"
 		}
 	]
 }
