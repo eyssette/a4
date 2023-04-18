@@ -4,18 +4,18 @@ deploy:
     entrypoint: ["/bin/sh", "-c"]
   script:
     - mkdir .public
-    - cp -r * .public
     - |+
       for f in $(find . -type f -name '*.md' ! -name 'README.md'); do
         filename=$(basename "$f" .md);
         if [ ! -f "$filename.html" ]; then
-          echo "$f";
-          echo "$filename.html"
           pandoc -f markdown -t html "$f" -o ".public/$filename.html" -s --template=template.html;
-          ls .public
         fi
       done
+    - ls .public
+    - cp -r * .public
+    - ls .public
     - mv .public public
+    - ls public
     - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)$' -exec gzip -f -k {} \;
     - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)$' -exec brotli -f -k {} \;
   artifacts:
