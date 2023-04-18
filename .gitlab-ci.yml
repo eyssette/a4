@@ -5,14 +5,13 @@ stages:
 build:
   image:
     name: pandoc/minimal
-    entrypoint: ["/bin/sh", "-c"]
   stage: build
   script:
     - |+
       for f in $(find . -type f -name '*.md' ! -name 'README.md'); do
         filename=$(basename "$f" .md)
         if [ ! -f "$filename.html" ]; then
-          pandoc "$f" -o "$filename.html" -s --template=template.html
+          pandoc -f markdown -t html "$f" -o "$filename.html" -s --template=template.html
         fi
       done
 
