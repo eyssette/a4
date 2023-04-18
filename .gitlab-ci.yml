@@ -11,13 +11,9 @@ deploy:
           pandoc -f markdown -t html "$f" -o ".public/$filename.html" -s --template=template.html;
         fi
       done
-    - ls .public
     - cp -r * .public
-    - ls .public
     - mv .public public
-    - ls public
     - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)$' -exec gzip -f -k {} \;
-    - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)$' -exec brotli -f -k {} \;
   artifacts:
     paths:
       - public
