@@ -2,20 +2,40 @@ body {
 	font-family: Garamond, Philosopher, "Times New Roman", Times, serif;
 	text-align: justify;
 	line-height: 1.15;
-	column-gap:25px;
+	column-gap: 25px;
 	orphans: 5;
 }
 
 h1 {
 	font-size: 1.2em;
 	text-align: center;
+	margin-bottom:1em;
 }
 
 h2 {
 	font-size: 1.05em;
 	margin-top: 1em !important;
-	margin-bottom: 0.25em !important;
+	margin-bottom: 0.5em !important;
 	break-after: avoid;
+}
+
+body > h2:first-child {
+	margin-top: 0 !important;
+}
+
+h3,
+h4,
+h5,
+h6 {
+	font-size: 1em;
+	margin-top: 0.75em;
+	margin-bottom: 0.5em;
+	break-after: avoid;
+	font-weight:normal;
+}
+
+h3 {
+	text-decoration: underline;
 }
 
 code {
@@ -24,4 +44,9 @@ code {
 	font-variant: small-caps;
 	font-family: inherit;
 	background: none !important;
+}
+
+ul,
+ol {
+	padding-left: 15px;
 }
