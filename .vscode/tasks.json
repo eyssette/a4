@@ -6,7 +6,7 @@
 		{
 			"label": "Create A4 page",
 			"type": "shell",
-			"command": "pandoc --lua-filter=fr-nbsp.lua ${file} -o ${fileBasenameNoExtension}.html -s --template=template.html ",
+			"command": "pandoc --lua-filter=pandoc/fr-nbsp.lua ${file} -o ${fileBasenameNoExtension}.html -s --template=pandoc/template.html ",
 			"group": {
 				"kind": "build",
 				"isDefault": true
