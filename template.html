@@ -22,9 +22,13 @@
 		<meta name="description" content="$description-meta$" />
 		$endif$
 		<title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
+		$if(css)$
 		$for(css)$
-		<link rel="stylesheet" href="$css$" />
+		<link rel="stylesheet" href="$if(css)$$css$$else$css/default.css$endif$" />
 		$endfor$
+		$else$
+		<link rel="stylesheet" href="css/default.css" />
+		$endif$
 		<style>
       * {margin:0}
       body{font-size:200px;width:21cm;margin:10px;padding:0}@media print{@page{size:A4;margin:10px}}
@@ -38,7 +42,7 @@
 			let fontSize = 200;
 			function adjustFontSize() {
 				let contentHeight = document.body.offsetHeight;
-				while (contentHeight > $if(paysage)$770$else$1110$endif$ * nPages) {
+				while (contentHeight > $if(paysage)$774$else$1110$endif$ * nPages) {
 					fontSize = fontSize - 0.5;
 					document.body.style.fontSize = fontSize + "px";
 					contentHeight = document.body.offsetHeight;

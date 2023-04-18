@@ -1,0 +1,27 @@
+body {
+	font-family: Garamond, Philosopher, "Times New Roman", Times, serif;
+	text-align: justify;
+	line-height: 1.15;
+	column-gap:25px;
+	orphans: 5;
+}
+
+h1 {
+	font-size: 1.2em;
+	text-align: center;
+}
+
+h2 {
+	font-size: 1.05em;
+	margin-top: 1em !important;
+	margin-bottom: 0.25em !important;
+	break-after: avoid;
+}
+
+code {
+	color: black !important;
+	font-size: 100%;
+	font-variant: small-caps;
+	font-family: inherit;
+	background: none !important;
+}
