@@ -4,7 +4,7 @@ stages:
 
 build:
   image:
-    name: pandoc/minimal
+    name: pandoc/core
   stage: build
   script:
     - |+
