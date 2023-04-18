@@ -8,7 +8,7 @@ pages:
       for f in $(find . -type f -name '*.md' ! -name 'README.md'); do
         filename=$(basename "$f" .md);
         if [ ! -f "$filename.html" ]; then
-          pandoc -f markdown -t html "$f" -o ".public/$filename.html" -s --template=template.html;
+          pandoc -f markdown -t html --lua-filter=fr-nbsp.lua "$f" -o ".public/$filename.html" -s --template=template.html;
         fi
       done
     - cp -r * .public
