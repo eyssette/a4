@@ -7,9 +7,9 @@ build:
   stage: build
   script:
     - |+
-      for f in *.md; do
-        if [ ! -f "${f%}.html" ]; then
-          pandoc "${f%}.md" -o "${f%}.html" -s --template=template.html
+      for f in $(find . -type f -name '*.md'); do
+        if [ ! -f "${f%.md}.html" ]; then
+          pandoc "${f}" -o "${f%.md}.html" -s --template=template.html
         fi
       done
 
