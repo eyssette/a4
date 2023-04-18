@@ -1,5 +1,6 @@
 ---
 pages: 1
+colonnes: 2
 ---
 
 # Titre
