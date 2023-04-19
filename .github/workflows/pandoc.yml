@@ -14,9 +14,8 @@ jobs:
       - name: create file list
         id: files_list
         run: |
-              echo "files=$(find . -type f -name '*.md' ! -name 'README.md' -printf '"%p" ')" > $GITHUB_OUTPUT
+              echo "files=$(find . -type f -name '*.md' ! -name 'README.md' -printf '"%p" ')" > $GITHUB_OUTPUT;
       - name: Set up pandoc
-        run: mkdir public
         uses: docker://pandoc/core
         with:
           args: >-
