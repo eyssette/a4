@@ -1,0 +1,35 @@
+name: Build and Publish Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up pandoc
+        uses: docker://pandoc/core
+
+      - name: Build pages
+        run: |
+          mkdir .public
+          for f in $(find . -type f -name '*.md' ! -name 'README.md'); do
+            filename=$(basename "$f" .md);
+            if [ ! -f "$filename.html" ]; then
+              pandoc -f markdown -t html --lua-filter=pandoc/fr-nbsp.lua "$f" -o ".public/$filename.html" -s --template=pandoc/template.html;
+            fi
+          done
+          cp -r * .public
+          mv .public public
+
+      - name: Publish pages
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          branch: gh-pages
+          folder: public
