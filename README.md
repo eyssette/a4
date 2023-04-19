@@ -32,7 +32,8 @@ pages: 1
 colonnes: 3
 paysage: true
 copies: [1,2,3]
----```
+---
+```
 
 - `pages` et `colonnes` indiquent respectivement le nombre de pages et de colonnes
 - pour une impression en format paysage, on met `paysage: true`
