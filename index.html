@@ -1,68 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
-	<meta charset="UTF-8">
-	<title>Création de documents à imprimer en A4 à partir d'un fichier en markdown</title>
-	<link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" media="screen" />
-	<link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura-dark.css" media="screen and (prefers-color-scheme: dark)" />
-	<style>pre > code {white-space: pre-line;}
-	</style>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>
+  Mise en forme automatique au format A4
+  </title>
+  <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" media="screen" />
+  <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura-dark.css" media="screen and (prefers-color-scheme: dark)" />
+  <style>pre > code {white-space: pre-line;}</style>
 </head>
 <body>
-	<h1 id="mise-en-forme-automatique-au-format-a4">Mise en forme
-		automatique au format A4</h1>
-		<p>Ce site vous propose un outil pour créer automatiquement à partir
-		d’un fichier en markdown une page HTML à imprimer en A4, avec :</p>
-		<ol type="1">
-		<li>Un calcul automatique de la taille de police optimale pour que le
-		contenu du document tienne sur le nombre de pages choisi, sans
-		dépassement.</li>
-		<li>La possibilité de choisir le nombre de pages, le nombre de colonnes,
-		une impression en format paysage ou portrait</li>
-		<li>La possibilité de répéter plusieurs fois le même contenu sur les
-		différentes pages ou colonnes</li>
-		<li>Un respect automatique des règles typographiques françaises sur les
-		espaces insécables</li>
-		</ol>
-		<h2 id="deux-usages-possibles">Deux usages possibles</h2>
-		<h3 id="fonctionnement-le-plus-simple-en-ligne">Fonctionnement le plus
-		simple : en ligne</h3>
-		<p>Clonez ce dossier et créez des fichiers markdown dans votre dossier
-		cloné. Ils seront automatiquement convertis et accessibles en ligne.</p>
-		<h3 id="fonctionnement-plus-complexe-en-local">Fonctionnement plus
-		complexe : en local</h3>
-		<p>Récupérez ce dossier en local et ouvrez-le avec VSCode. Une tâche
-		pour VSCode est définie dans le dossier .vscode afin d’automatiser la
-		conversion du fichier markdown sur lequel vous travaillez.</p>
-		<p>Vous pouvez aussi utiliser le template pandoc, le filtre fr-nbsp.lua
-		et le fichier CSS utilisé par défaut.</p>
-		<h2 id="configuration-du-format-de-limpression">Configuration du format
-		de l’impression</h2>
-		<p>Pour configurer l’impression, il faut ajouter un en-tête au début de votre
-		document markdown.</p>
-		<p>Voici un exemple :</p>
-		<div class="sourceCode" id="cb1"><pre
-		class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-		<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pages</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
-		<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colonnes</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span>
-		<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">paysage</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-		<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">copies</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="dv">1</span><span class="kw">,</span><span class="dv">2</span><span class="kw">,</span><span class="dv">3</span><span class="kw">]</span></span>
-		<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
-		<ul>
-		<li><code>pages</code> et <code>colonnes</code> indiquent respectivement
-		le nombre de pages et de colonnes</li>
-		<li>pour une impression en format paysage, on met
-		<code>paysage: true</code></li>
-		<li>pour recopier plusieurs fois le contenu du document (par exemple
-		pour mettre deux fois le même contenu sur une page A4 pour ensuite
-		découper sa page et distribuer du A5), il faut lister le nombre de
-		copies ainsi : <code>copies: [1,2,3]</code> pour trois copies.</li>
-		</ul>
-		<h2 id="crédits">Crédits</h2>
-		<p>Cet outil est distribué gratuitement et sous licence libre.</p>
-		<p>Il dépend des outils libres suivants : <a
-		href="https://pandoc.org/">pandoc</a> et <a
-		href="https://github.com/InseeFrLab/pandoc-filter-fr-nbsp">fr-nbsp</a></p>
-</body>
+<h1 id="mise-en-forme-automatique-au-format-a4">Mise en forme
+automatique au format A4</h1>
+<p>Ce site (sur <a href="https://forge.aeif.fr/eyssette/a4">Gitlab</a>
+ou sur <a href="https://github.com/eyssette/a4">Github</a>) vous propose
+un outil pour créer automatiquement à partir d’un fichier en markdown
+une page HTML à imprimer en A4, avec :</p>
+<ol type="1">
+<li>Un calcul automatique de la taille de police optimale pour que le
+contenu du document tienne sur le nombre de pages choisi, sans
+dépassement.</li>
+<li>La possibilité de choisir le nombre de pages, le nombre de colonnes,
+une impression en format paysage ou portrait</li>
+<li>La possibilité de répéter plusieurs fois le même contenu sur les
+différentes pages ou colonnes</li>
+<li>Un respect automatique des règles typographiques françaises sur les
+espaces insécables</li>
+</ol>
+<h2 id="configuration-du-format-de-limpression">Configuration du format
+de l’impression</h2>
+<p>Pour configurer l’impression, il faut ajouter un en-tête au début de
+votre document markdown.</p>
+<p>Voici un exemple :</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pages</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colonnes</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">paysage</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">copies</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="dv">1</span><span class="kw">,</span><span class="dv">2</span><span class="kw">,</span><span class="dv">3</span><span class="kw">]</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<ul>
+<li><code>pages</code> et <code>colonnes</code> indiquent respectivement
+le nombre de pages et de colonnes</li>
+<li>pour une impression en format paysage, on met
+<code>paysage: true</code></li>
+<li>pour recopier plusieurs fois le contenu du document (par exemple
+pour mettre deux fois le même contenu sur une page A4 pour ensuite
+découper sa page et distribuer du A5), il faut lister le nombre de
+copies ainsi : <code>copies: [1,2,3]</code> pour trois copies.</li>
+</ul>
+<h2 id="deux-usages-possibles">Deux usages possibles</h2>
+<h3 id="fonctionnement-le-plus-simple-en-ligne">Fonctionnement le plus
+simple : en ligne</h3>
+<p>Clonez ce dossier (sur <a
+href="https://forge.aeif.fr/eyssette/a4">Gitlab</a> ou sur <a
+href="https://github.com/eyssette/a4">Github</a>) et créez des fichiers
+markdown dans votre dossier cloné. Ils seront automatiquement convertis
+et accessibles en ligne.</p>
+<h3 id="fonctionnement-plus-complexe-en-local">Fonctionnement plus
+complexe : en local</h3>
+<p>Récupérez ce dossier (sur <a
+href="https://forge.aeif.fr/eyssette/a4">Gitlab</a> ou sur <a
+href="https://github.com/eyssette/a4">Github</a>) en local et ouvrez-le
+avec VSCode. Une tâche pour VSCode est définie dans le dossier .vscode
+afin d’automatiser la conversion du fichier markdown sur lequel vous
+travaillez.</p>
+<p>Vous pouvez aussi utiliser le template pandoc, le filtre fr-nbsp.lua
+et le fichier CSS utilisé par défaut.</p>
+<h2 id="crédits">Crédits</h2>
+<p>Cet outil est distribué gratuitement et sous licence libre.</p>
+<p>Il dépend des outils libres suivants : <a
+href="https://pandoc.org/">pandoc</a> et <a
+href="https://github.com/InseeFrLab/pandoc-filter-fr-nbsp">fr-nbsp</a></p>
 </body>
 </html>
