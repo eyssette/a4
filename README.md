@@ -16,6 +16,12 @@ Ce site (sur [Gitlab](https://forge.aeif.fr/eyssette/a4) ou sur [Github](https:/
 3. La possibilité de répéter plusieurs fois le même contenu sur les différentes pages ou colonnes
 4. Un respect automatique des règles typographiques françaises sur les espaces insécables
 
+## Quelques exemples
+
+- [Impression sur une page](eyssette.forge.aeif.fr/a4/test-1page)
+- [Impression sur 3 colonnes, avec répétition du même contenu](eyssette.forge.aeif.fr/a4/test-3colonnes-copies)
+- [Impression sur 2 pages et 3 colonnes](eyssette.forge.aeif.fr/a4/test-2pages)
+
 
 ## Configuration du format de l'impression
 
