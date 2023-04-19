@@ -26,7 +26,7 @@ jobs:
             --lua-filter=pandoc/fr-nbsp.lua
             -o "public/${{steps.files_list.outputs.files}}.html"
             -s --template=pandoc/template.html
-      - name: Publish pages
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
