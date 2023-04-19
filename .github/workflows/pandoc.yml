@@ -11,20 +11,21 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: create file list
-        id: files_list
-        run: |
-              echo "files=$(find . -type f -name '*.md' ! -name 'README.md' -printf '"%p" ')" > $GITHUB_OUTPUT;
-      - name: Set up pandoc
-        uses: docker://pandoc/core
+      - uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-          args: >-
-            ${{ steps.files_list.outputs.files }}
-            -f markdown
-            -t html
-            --lua-filter=pandoc/fr-nbsp.lua
-            -o "public/${{steps.files_list.outputs.files}}.html"
-            -s --template=pandoc/template.html
+          packages: pandoc
+          version: 1.0
+      - name: Convert with Pandoc
+        run: |
+            mkdir .public
+            for f in $(find . -type f -name '*.md' ! -name 'README.md'); do
+              filename=$(basename "$f" .md);
+              if [ ! -f "$filename.html" ]; then
+                pandoc -f markdown -t html --lua-filter=pandoc/fr-nbsp.lua "$f" -o ".public/$filename.html" -s --template=pandoc/template.html;
+              fi
+            done
+            cp -r * .public
+            mv .public public
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
