@@ -26,17 +26,10 @@
 			let maxHeight = 774 * nPages;
 			let stepReduceFontSize = maxHeight * 2.5;
 			function adjustFontSize() {
-				let contentHeight = document.body.clientHeight;
-				if (contentHeight <= maxHeight) {
-					document.body.style.fontSize = fontSize + "px";
-					return;
-				}
-
 				let newFontSize = fontSize;
 				let start = null;
 				function update(timestamp) {
 					if (!start) start = timestamp;
-					let progress = timestamp - start;
 					let newContentHeight = document.body.clientHeight;
 					if (newContentHeight > maxHeight) {
 						newFontSize -= newContentHeight / stepReduceFontSize;
@@ -50,10 +43,8 @@
 						requestAnimationFrame(update);
 					}
 				}
-
 				requestAnimationFrame(update);
 			}
-
 			window.addEventListener("load", adjustFontSize);
 			window.addEventListener("resize", adjustFontSize);
 		</script>
