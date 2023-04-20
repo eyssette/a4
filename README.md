@@ -1,10 +1,10 @@
----
+<!-- ---
 header-includes: |
   <title>Mise en forme automatique au format A4</title>
   <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" media="screen" />
   <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura-dark.css" media="screen and (prefers-color-scheme: dark)" />
   <style>pre > code {white-space: pre-line;}a{color:darkorchid!important}</style>
----
+--- -->
 
 # Mise en forme automatique au format A4
 
