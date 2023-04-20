@@ -9,7 +9,7 @@
   </title>
   <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" media="screen" />
   <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura-dark.css" media="screen and (prefers-color-scheme: dark)" />
-  <style>pre > code {white-space: pre-line;}a{color:darkorchid!important}</style>
+  <style>pre > code {white-space: pre-line;}a{color:darkorchid}</style>
 </head>
 <body>
 <h1 id="mise-en-forme-automatique-au-format-a4">Mise en forme
@@ -31,12 +31,13 @@ espaces insécables</li>
 </ol>
 <h2 id="quelques-exemples">Quelques exemples</h2>
 <ul>
-<li><a href="https://eyssette.forge.aeif.fr/a4/test-1page">Impression sur une
-page</a></li>
-<li><a href="https://eyssette.forge.aeif.fr/a4/test-3colonnes-copies">Impression
+<li><a href="https://eyssette.forge.aeif.fr/a4/test-1page">Impression
+sur une page</a></li>
+<li><a
+href="https://eyssette.forge.aeif.fr/a4/test-3colonnes-copies">Impression
 sur 3 colonnes, avec répétition du même contenu</a></li>
-<li><a href="https://eyssette.forge.aeif.fr/a4/test-2pages">Impression sur 2
-pages et 3 colonnes</a></li>
+<li><a href="https://eyssette.forge.aeif.fr/a4/test-2pages">Impression
+sur 2 pages et 3 colonnes</a></li>
 </ul>
 <h2 id="configuration-du-format-de-limpression">Configuration du format
 de l’impression</h2>
@@ -60,16 +61,19 @@ pour mettre deux fois le même contenu sur une page A4 pour ensuite
 découper sa page et distribuer du A5), il faut lister le nombre de
 copies ainsi : <code>copies: [1,2,3]</code> pour trois copies.</li>
 </ul>
-<h2 id="deux-usages-possibles">Deux usages possibles</h2>
-<h3 id="fonctionnement-le-plus-simple-en-ligne">Fonctionnement le plus
-simple : en ligne</h3>
+<h2 id="trois-usages-possibles">Trois usages possibles</h2>
+<h3 id="conversion-en-ligne">Conversion en ligne</h3>
+<p>Copiez-coller votre markdown dans cet outil de conversion en ligne et
+cliquez sur le bouton “Convertir”:</p>
+<p><a href="https://eyssette.forge.aeif.fr/a4/convert.html"
+class="uri">https://eyssette.forge.aeif.fr/a4/convert.html</a></p>
+<h3 id="sur-une-forge">Sur une forge</h3>
 <p>Clonez ce dossier (sur <a
 href="https://forge.aeif.fr/eyssette/a4">Gitlab</a> ou sur <a
 href="https://github.com/eyssette/a4">Github</a>) et créez des fichiers
 markdown dans votre dossier cloné. Ils seront automatiquement convertis
 et accessibles en ligne.</p>
-<h3 id="fonctionnement-plus-complexe-en-local">Fonctionnement plus
-complexe : en local</h3>
+<h3 id="en-local">En local</h3>
 <p>Récupérez ce dossier (sur <a
 href="https://forge.aeif.fr/eyssette/a4">Gitlab</a> ou sur <a
 href="https://github.com/eyssette/a4">Github</a>) en local et ouvrez-le
@@ -82,6 +86,11 @@ et le fichier CSS utilisé par défaut.</p>
 <p>Cet outil est distribué gratuitement et sous licence libre.</p>
 <p>Il dépend des outils libres suivants : <a
 href="https://pandoc.org/">pandoc</a> et <a
-href="https://github.com/InseeFrLab/pandoc-filter-fr-nbsp">fr-nbsp</a></p>
+href="https://github.com/InseeFrLab/pandoc-filter-fr-nbsp">fr-nbsp</a>
+pour les versions sur forge ou en local, et <a
+href="https://marked.js.org/">marked</a>, <a
+href="https://github.com/cure53/DOMPurify">DOMPurify</a> et <a
+href="https://github.com/nodeca/js-yaml">js-yaml</a> pour la version en
+ligne.</p>
 </body>
 </html>

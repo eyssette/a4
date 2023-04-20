@@ -1,11 +1,10 @@
-<!-- Pour Pandoc
 ---
 header-includes: |
   <title>Mise en forme automatique au format A4</title>
   <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" media="screen" />
   <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura-dark.css" media="screen and (prefers-color-scheme: dark)" />
   <style>pre > code {white-space: pre-line;}a{color:darkorchid}</style>
---- -->
+---
 
 # Mise en forme automatique au format A4
 
@@ -42,14 +41,21 @@ copies: [1,2,3]
 - pour une impression en format paysage, on met `paysage: true`
 - pour recopier plusieurs fois le contenu du document (par exemple pour mettre deux fois le même contenu sur une page A4 pour ensuite découper sa page et distribuer du A5), il faut lister le nombre de copies ainsi : `copies: [1,2,3]` pour trois copies.
 
-## Deux usages possibles
+## Trois usages possibles
 
-### Fonctionnement le plus simple : en ligne
+### Conversion en ligne
+
+Copiez-coller votre markdown dans cet outil de conversion en ligne et cliquez sur le bouton “Convertir”:
+
+<https://eyssette.forge.aeif.fr/a4/convert.html>
+
+
+### Sur une forge
 
 Clonez ce dossier (sur [Gitlab](https://forge.aeif.fr/eyssette/a4) ou sur [Github](https://github.com/eyssette/a4)) et créez des fichiers markdown dans votre dossier cloné.
 Ils seront automatiquement convertis et accessibles en ligne.
 
-### Fonctionnement plus complexe : en local
+### En local
 
 Récupérez ce dossier (sur [Gitlab](https://forge.aeif.fr/eyssette/a4) ou sur [Github](https://github.com/eyssette/a4)) en local et ouvrez-le avec VSCode. Une tâche pour VSCode est définie dans le dossier .vscode afin d'automatiser la conversion du fichier markdown sur lequel vous travaillez.
 
@@ -59,4 +65,4 @@ Vous pouvez aussi utiliser le template pandoc, le filtre fr-nbsp.lua et le fichi
 
 Cet outil est distribué gratuitement et sous licence libre.
 
-Il dépend des outils libres suivants : [pandoc](https://pandoc.org/) et [fr-nbsp](https://github.com/InseeFrLab/pandoc-filter-fr-nbsp)
+Il dépend des outils libres suivants : [pandoc](https://pandoc.org/) et [fr-nbsp](https://github.com/InseeFrLab/pandoc-filter-fr-nbsp) pour les versions sur forge ou en local, et [marked](https://marked.js.org/), [DOMPurify](https://github.com/cure53/DOMPurify) et [js-yaml](https://github.com/nodeca/js-yaml) pour la version en ligne.
