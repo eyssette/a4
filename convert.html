@@ -51,6 +51,7 @@
 				${(yaml && typeof params.paysage !== "undefined" || yaml && typeof params.landscape !== "undefined" ? "let maxHeight = 774*nPages": "let maxHeight = 1100*nPages; ")}
 			let stepReduceFontSize = maxHeight * 2.5;
 			let ratio;
+			let trackReduction = 0
 			function adjustFontSize() {
 				let newFontSize = fontSize;
 				let start = null;
@@ -60,8 +61,12 @@
 					if (newContentHeight > maxHeight) {
 						ratio = newContentHeight / stepReduceFontSize
 						newFontSize -= ratio;
-						document.body.style.fontSize = newFontSize + "px";
+						if (newFontSize > trackReduction) {
+							document.body.style.fontSize = newFontSize + "px";
+						}
+						trackReduction = newFontSize
 						start = timestamp;
+						
 					} else if (newFontSize !== fontSize) {
 						fontSize = newFontSize;
 						document.body.style.fontSize = fontSize + "px"
