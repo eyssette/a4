@@ -60,7 +60,7 @@
 					if (newContentHeight > maxHeight) {
 						ratio = newContentHeight / stepReduceFontSize
 						newFontSize -= ratio;
-						if(ratio >= 0.5) {document.body.style.fontSize = newFontSize + "px";}
+						document.body.style.fontSize = newFontSize + "px";
 						start = timestamp;
 					} else if (newFontSize !== fontSize) {
 						fontSize = newFontSize;
