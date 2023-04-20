@@ -40,7 +40,7 @@
 		<script>
       $if(pages)$ let nPages = $pages$; $else$ let nPages = 1; $endif$
 			let fontSize = 100;
-			let maxHeight = $if(paysage)$774$else$1110$endif$ * nPages;
+			let maxHeight = $if(paysage)$774$else$1025$endif$ * nPages;
 			let stepReduceFontSize = maxHeight * 2.5;
 			function adjustFontSize() {
 				let newFontSize = fontSize;
@@ -65,7 +65,10 @@
 			window.addEventListener("load", adjustFontSize);
 			window.addEventListener("resize", adjustFontSize);
 		</script>
-		$for(header-includes)$ $header-includes$ $endfor$ $if(math)$ $math$ $endif$
+		$for(header-includes)$ $header-includes$ $endfor$
+		$if(maths)$<script
+src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+type="text/javascript"></script>$endif$
 		<!--[if lt IE 9]>
 			<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
 		<![endif]-->

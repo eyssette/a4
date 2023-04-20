@@ -45,10 +45,11 @@
 				${(yaml && typeof params.colonnes !== "undefined" ? "body{ columns:"+params.colonnes+"}": "")}
 				${(yaml && typeof params.paysage !== "undefined" || yaml && typeof params.landscape !== "undefined" ? "body{ width:29.7cm!important}@media print{@page{size:A4 landscape!important;}}": "")}
 				</style>
+				${(yaml && typeof params.maths !== "undefined" && params.maths === true ? "<script src=\"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js\" type=\"text/javascript\"><\/script>" : "")}
 				<script>
 				${(yaml && typeof params.pages !== "undefined" ? "let nPages = "+params.pages+"; ": "let nPages=1; ")}	
 			let fontSize = 100;
-				${(yaml && typeof params.paysage !== "undefined" || yaml && typeof params.landscape !== "undefined" ? "let maxHeight = 774*nPages": "let maxHeight = 1100*nPages; ")}
+				${(yaml && typeof params.paysage !== "undefined" || yaml && typeof params.landscape !== "undefined" ? "let maxHeight = 774*nPages": "let maxHeight = 1025*nPages; ")}
 			let stepReduceFontSize = maxHeight * 2.5;
 			let ratio;
 			let trackReduction = 0
@@ -61,9 +62,9 @@
 					if (newContentHeight > maxHeight) {
 						ratio = newContentHeight / stepReduceFontSize
 						newFontSize -= ratio;
-						if (newFontSize > trackReduction) {
+						${(yaml && typeof params.maths !== "undefined" && params.maths === true ? "": "if (newFontSize > trackReduction) {")}
 							document.body.style.fontSize = newFontSize + "px";
-						}
+							${(yaml && typeof params.maths !== "undefined" && params.maths === true ? "": "}")}
 						trackReduction = newFontSize
 						start = timestamp;
 						

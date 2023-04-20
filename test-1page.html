@@ -23,7 +23,7 @@
 		<script>
        let nPages = 1; 
 			let fontSize = 100;
-			let maxHeight = 1110 * nPages;
+			let maxHeight = 1025 * nPages;
 			let stepReduceFontSize = maxHeight * 2.5;
 			function adjustFontSize() {
 				let newFontSize = fontSize;
@@ -48,7 +48,8 @@
 			window.addEventListener("load", adjustFontSize);
 			window.addEventListener("resize", adjustFontSize);
 		</script>
-		 
+		
+		
 		<!--[if lt IE 9]>
 			<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
 		<![endif]-->
