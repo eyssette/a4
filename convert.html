@@ -50,25 +50,21 @@
 			let fontSize = 100;
 				${(yaml && typeof params.paysage !== "undefined" || yaml && typeof params.landscape !== "undefined" ? "let maxHeight = 774*nPages": "let maxHeight = 1100*nPages; ")}
 			let stepReduceFontSize = maxHeight * 2.5;
+			let ratio;
 			function adjustFontSize() {
-				let contentHeight = document.body.clientHeight;
-				if (contentHeight <= maxHeight) {
-					document.body.style.fontSize = fontSize + "px";
-					return;
-				}
 				let newFontSize = fontSize;
 				let start = null;
 				function update(timestamp) {
 					if (!start) start = timestamp;
-					let progress = timestamp - start;
 					let newContentHeight = document.body.clientHeight;
 					if (newContentHeight > maxHeight) {
-						newFontSize -= newContentHeight / stepReduceFontSize;
-						document.body.style.fontSize = newFontSize + "px";
+						ratio = newContentHeight / stepReduceFontSize
+						newFontSize -= ratio;
+						if(ratio >= 0.5) {document.body.style.fontSize = newFontSize + "px";}
 						start = timestamp;
 					} else if (newFontSize !== fontSize) {
 						fontSize = newFontSize;
-						document.body.style.fontSize = fontSize + "px";
+						document.body.style.fontSize = fontSize + "px"
 					}
 					if (newFontSize > 0) {
 						requestAnimationFrame(update);
