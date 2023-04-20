@@ -50,7 +50,8 @@ class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colonnes</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">paysage</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">copies</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="dv">1</span><span class="kw">,</span><span class="dv">2</span><span class="kw">,</span><span class="dv">3</span><span class="kw">]</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">maths</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <ul>
 <li><code>pages</code> et <code>colonnes</code> indiquent respectivement
 le nombre de pages et de colonnes</li>
@@ -60,6 +61,10 @@ le nombre de pages et de colonnes</li>
 pour mettre deux fois le même contenu sur une page A4 pour ensuite
 découper sa page et distribuer du A5), il faut lister le nombre de
 copies ainsi : <code>copies: [1,2,3]</code> pour trois copies.</li>
+<li><code>maths: true</code> permet d’écrire des formules mathématiques
+avec la syntaxe <code>\\(FORMULE\\)</code> ou <code>$$FORMULE$$</code>.
+Si la formule est trop longue, la mise en page risque cependant d’être
+perturbée et il faudra la retoucher manuellement.</li>
 </ul>
 <h2 id="trois-usages-possibles">Trois usages possibles</h2>
 <h3 id="conversion-en-ligne">1/ Conversion en ligne</h3>
