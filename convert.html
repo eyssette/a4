@@ -73,7 +73,7 @@
 			<\/script>
 			</head>
 			<body>
-				${html.replaceAll(' !','&nbsp;!').replaceAll(' ?','&nbsp;?').replaceAll(' ;','&nbsp;;').replaceAll(' :','&nbsp;:').replaceAll(' »','&nbsp;»').replaceAll('« ','«&nbsp;')}
+				${(yaml && typeof params.copies !== undefined ? Array.from(params.copies).map(function() {return html.replaceAll(' !','&nbsp;!').replaceAll(' ?','&nbsp;?').replaceAll(' ;','&nbsp;;').replaceAll(' :','&nbsp;:').replaceAll(' »','&nbsp;»').replaceAll('« ','«&nbsp;')}).join("") : html.replaceAll(' !','&nbsp;!').replaceAll(' ?','&nbsp;?').replaceAll(' ;','&nbsp;;').replaceAll(' :','&nbsp;:').replaceAll(' »','&nbsp;»').replaceAll('« ','«&nbsp;'))}
 			</body>
 			</html>`;
 			const result = window.open();
