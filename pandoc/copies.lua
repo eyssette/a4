@@ -23,8 +23,8 @@ function Meta(meta)
 		else
 			meta.copies = nil
 		end
+		return meta
 	end
-	return meta
 end
 
 return {
