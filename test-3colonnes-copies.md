@@ -2,7 +2,7 @@
 pages: 1
 paysage: true
 colonnes: 3
-copies: [1,2,3]
+copies: 3
 ---
 
 # Titre

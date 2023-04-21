@@ -33,14 +33,14 @@ Voici un exemple :
 pages: 1
 colonnes: 3
 paysage: true
-copies: [1,2,3]
+copies: 3
 maths: true
 ---
 ```
 
 - `pages` et `colonnes` indiquent respectivement le nombre de pages et de colonnes
 - pour une impression en format paysage, on met `paysage: true`
-- pour recopier plusieurs fois le contenu du document (par exemple pour mettre deux fois le même contenu sur une page A4 pour ensuite découper sa page et distribuer du A5), il faut lister le nombre de copies ainsi : `copies: [1,2,3]` pour trois copies.
+- pour recopier plusieurs fois le contenu du document (par exemple pour mettre deux fois le même contenu sur une page A4 pour ensuite découper sa page et distribuer du A5), il faut indiquer le nombre de copies ainsi : `copies: 3` pour trois copies.
 - `maths: true` permet d'écrire des formules mathématiques avec la syntaxe `\\(FORMULE\\)` ou `$$FORMULE$$`. Si la formule est trop longue, la mise en page risque cependant d'être perturbée et il faudra la retoucher manuellement.
 
 ## Trois usages possibles
