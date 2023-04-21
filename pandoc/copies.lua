@@ -26,9 +26,3 @@ function Meta(meta)
 		return meta
 	end
 end
-
-return {
-	{
-	  Meta = Meta
-	}
-  }
