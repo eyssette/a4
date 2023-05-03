@@ -17,21 +17,22 @@ Ce site (sur [Gitlab](https://forge.aeif.fr/eyssette/a4) ou sur [Github](https:/
 
 ## Quelques exemples
 
-- [Impression sur une page](https://eyssette.forge.aeif.fr/a4/test-1page)
-- [Impression sur 3 colonnes, avec répétition du même contenu](https://eyssette.forge.aeif.fr/a4/test-3colonnes-copies)
-- [Impression sur 2 pages et 3 colonnes](https://eyssette.forge.aeif.fr/a4/test-2pages)
+- Impression sur une page : [rendu](https://eyssette.forge.aeif.fr/a4/test-1page), [source](https://eyssette.forge.aeif.fr/a4/test-1page.md)
+- Impression sur 3 colonnes, avec répétition du même contenu : [rendu](https://eyssette.forge.aeif.fr/a4/test-3colonnes-copies), [source](https://eyssette.forge.aeif.fr/a4/test-3colonnes-copies.md)
+- Impression sur 2 pages et 3 colonnes : [rendu](https://eyssette.forge.aeif.fr/a4/test-2pages), [source](https://eyssette.forge.aeif.fr/a4/test-2pages.md)
 
 
-## Configuration du format de l'impression
+## Configuration de l'impression
 
-Pour configurer l'impression, il faut ajouter un en-tête au début de votre document markdown.
+Pour configurer l’impression, il faut ajouter un en-tête au début de votre document markdown. Plusieurs paramètres sont disponibles.
 
-Voici un exemple :
+Voici un exemple avec tous ces paramètres (on n'est pas obligé de tous les utiliser) :
 
 ```yaml
 ---
 pages: 1
 colonnes: 3
+espacementColonnes: 30px
 paysage: true
 copies: 3
 maths: true
@@ -39,6 +40,7 @@ maths: true
 ```
 
 - `pages` et `colonnes` indiquent respectivement le nombre de pages et de colonnes
+- on peut définir l'espacement en pixels entre les colonnes : `espacementColonnes: 30px`
 - pour une impression en format paysage, on met `paysage: true`
 - pour recopier plusieurs fois le contenu du document (par exemple pour mettre deux fois le même contenu sur une page A4 pour ensuite découper sa page et distribuer du A5), il faut indiquer le nombre de copies ainsi : `copies: 3` pour trois copies.
 - `maths: true` permet d'écrire des formules mathématiques avec la syntaxe `\\(FORMULE\\)` ou `$$FORMULE$$`. Si la formule est trop longue, la mise en page risque cependant d'être perturbée et il faudra la retoucher manuellement.
