@@ -39,15 +39,15 @@ sur 3 colonnes, avec répétition du même contenu</a></li>
 <li><a href="https://eyssette.forge.aeif.fr/a4/test-2pages">Impression
 sur 2 pages et 3 colonnes</a></li>
 </ul>
-<h2 id="configuration-du-format-de-limpression">Configuration du format
-de l’impression</h2>
+<h2 id="configuration-de-limpression">Configuration de l’impression</h2>
 <p>Pour configurer l’impression, il faut ajouter un en-tête au début de
-votre document markdown.</p>
-<p>Voici un exemple :</p>
+votre document markdown. Plusieurs paramètres sont disponibles.</p>
+<p>Voici un exemple avec tous ces paramètres (on n'est pas obligé de tous les utiliser) :</p>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pages</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colonnes</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span>
+<class="fu">espacementColonnes</span><span class="kw">:</span><span class="at"> </span><span class="dv">30px</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">paysage</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
 <class="fu">copies</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">maths</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
@@ -55,6 +55,7 @@ class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="
 <ul>
 <li><code>pages</code> et <code>colonnes</code> indiquent respectivement
 le nombre de pages et de colonnes</li>
+<li>on peut définir l'espacement en pixels entre les colonnes : <code>espacementColonnes: 30px</code></li>
 <li>pour une impression en format paysage, on met
 <code>paysage: true</code></li>
 <li>pour recopier plusieurs fois le contenu du document (par exemple
