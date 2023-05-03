@@ -44,6 +44,8 @@
 				*{margin:0;overflow-wrap: break-word;}body{font-size:100px;width:21cm;margin:10px;padding:0}@media print{@page{size:A4;margin:10px;}body{margin:auto}}
 				${(yaml && typeof params.columns !== "undefined" ? "body{ columns:"+params.columns+"}": "")}
 				${(yaml && typeof params.colonnes !== "undefined" ? "body{ columns:"+params.colonnes+"}": "")}
+				${(yaml && typeof params.espacementColonnes !== "undefined" ? "body{ column-gap:"+params.espacementColonnes+"}": "")}
+				${(yaml && typeof params.columnGap !== "undefined" ? "body{ column-gap:"+params.columnGap+"}": "")}
 				${(yaml && typeof params.paysage !== "undefined" || yaml && typeof params.landscape !== "undefined" ? "body{ width:29.7cm!important}@media print{@page{size:A4 landscape!important;}}": "")}
 				</style>
 				${(yaml && typeof params.maths !== "undefined" && params.maths === true ? "<script src=\"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js\" type=\"text/javascript\"><\/script>" : "")}
