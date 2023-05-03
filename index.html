@@ -12,22 +12,13 @@
   <style>pre > code {white-space: pre-line;}a{color:darkorchid!important}</style>
 </head>
 <body>
-<h1 id="mise-en-forme-automatique-au-format-a4">Mise en forme
-automatique au format A4</h1>
-<p>Ce site (sur <a href="https://forge.aeif.fr/eyssette/a4">Gitlab</a>
-ou sur <a href="https://github.com/eyssette/a4">Github</a>) vous propose
-un outil pour créer automatiquement à partir d’un fichier en markdown
-une page HTML à imprimer en A4, avec :</p>
+<h1 id="mise-en-forme-automatique-au-format-a4">Mise en forme automatique au format A4</h1>
+<p>Ce site (sur <a href="https://forge.aeif.fr/eyssette/a4">Gitlab</a> ou sur <a href="https://github.com/eyssette/a4">Github</a>) vous propose un outil pour créer automatiquement à partir d’un fichier en markdown une page HTML à imprimer en A4, avec :</p>
 <ol type="1">
-<li>Un calcul automatique de la taille de police optimale pour que le
-contenu du document tienne sur le nombre de pages choisi, sans
-dépassement.</li>
-<li>La possibilité de choisir le nombre de pages, le nombre de colonnes,
-une impression en format paysage ou portrait</li>
-<li>La possibilité de répéter plusieurs fois le même contenu sur les
-différentes pages ou colonnes</li>
-<li>Un respect automatique des règles typographiques françaises sur les
-espaces insécables</li>
+<li>Un calcul automatique de la taille de police optimale pour que le contenu du document tienne sur le nombre de pages choisi, sans dépassement.</li>
+<li>La possibilité de choisir le nombre de pages, le nombre de colonnes, une impression en format paysage ou portrait</li>
+<li>La possibilité de répéter plusieurs fois le même contenu sur les différentes pages ou colonnes</li>
+<li>Un respect automatique des règles typographiques françaises sur les espaces insécables</li>
 </ol>
 <h2 id="quelques-exemples">Quelques exemples</h2>
 <ul>
@@ -37,8 +28,7 @@ href="https://eyssette.forge.aeif.fr/a4/test-3colonnes-copies">rendu</a>, <a hre
 <li>Impression sur 2 pages et 3 colonnes : <a href="https://eyssette.forge.aeif.fr/a4/test-2pages">rendu</a>, <a href="https://eyssette.forge.aeif.fr/a4/test-2pages.md">fichier source</a></li>
 </ul>
 <h2 id="configuration-de-limpression">Configuration de l’impression</h2>
-<p>Pour configurer l’impression, il faut ajouter un en-tête au début de
-votre document markdown. Plusieurs paramètres sont disponibles.</p>
+<p>Pour configurer l’impression, il faut ajouter un en-tête au début de votre document markdown. Plusieurs paramètres sont disponibles.</p>
 <p>Voici un exemple avec tous ces paramètres (on n'est pas obligé de tous les utiliser) :</p>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
@@ -50,50 +40,24 @@ class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">maths</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <ul>
-<li><code>pages</code> et <code>colonnes</code> indiquent respectivement
-le nombre de pages et de colonnes</li>
+<li><code>pages</code> et <code>colonnes</code> indiquent respectivement le nombre de pages et de colonnes</li>
 <li>on peut définir l'espacement en pixels entre les colonnes : <code>espacementColonnes: 30px</code></li>
 <li>pour une impression en format paysage, on met
 <code>paysage: true</code></li>
-<li>pour recopier plusieurs fois le contenu du document (par exemple
-pour mettre deux fois le même contenu sur une page A4 pour ensuite
-découper sa page et distribuer du A5), il faut lister le nombre de
-copies ainsi : <code>copies: 3</code> pour trois copies.</li>
-<li><code>maths: true</code> permet d’écrire des formules mathématiques
-avec la syntaxe <code>\\(FORMULE\\)</code> ou <code>$$FORMULE$$</code>.
-Si la formule est trop longue, la mise en page risque cependant d’être
-perturbée et il faudra la retoucher manuellement.</li>
+<li>pour recopier plusieurs fois le contenu du document (par exemple pour mettre deux fois le même contenu sur une page A4 pour ensuite découper sa page et distribuer du A5), il faut lister le nombre de copies ainsi : <code>copies: 3</code> pour trois copies.</li>
+<li><code>maths: true</code> permet d’écrire des formules mathématiques avec la syntaxe <code>\\(FORMULE\\)</code> ou <code>$$FORMULE$$</code>. Si la formule est trop longue, la mise en page risque cependant d’être perturbée et il faudra la retoucher manuellement.</li>
 </ul>
 <h2 id="trois-usages-possibles">Trois usages possibles</h2>
 <h3 id="conversion-en-ligne">1/ Conversion en ligne</h3>
-<p>Copiez-coller votre markdown dans cet outil de conversion en ligne et
-cliquez sur le bouton “Convertir”:</p>
-<p><a href="https://eyssette.forge.aeif.fr/a4/convert.html"
-class="uri">https://eyssette.forge.aeif.fr/a4/convert.html</a></p>
+<p>Copiez-coller votre markdown dans cet outil de conversion en ligne et cliquez sur le bouton “Convertir”:</p>
+<p><a href="https://eyssette.forge.aeif.fr/a4/convert.html" class="uri">https://eyssette.forge.aeif.fr/a4/convert.html</a></p>
 <h3 id="sur-une-forge">2/ Sur une forge</h3>
-<p>Clonez ce dossier (sur <a
-href="https://forge.aeif.fr/eyssette/a4">Gitlab</a> ou sur <a
-href="https://github.com/eyssette/a4">Github</a>) et créez des fichiers
-markdown dans votre dossier cloné. Ils seront automatiquement convertis
-et accessibles en ligne.</p>
+<p>Clonez ce dossier (sur <a href="https://forge.aeif.fr/eyssette/a4">Gitlab</a> ou sur <a href="https://github.com/eyssette/a4">Github</a>) et créez des fichiers markdown dans votre dossier cloné. Ils seront automatiquement convertis et accessibles en ligne.</p>
 <h3 id="en-local">3/ En local</h3>
-<p>Récupérez ce dossier (sur <a
-href="https://forge.aeif.fr/eyssette/a4">Gitlab</a> ou sur <a
-href="https://github.com/eyssette/a4">Github</a>) en local et ouvrez-le
-avec VSCode. Une tâche pour VSCode est définie dans le dossier .vscode
-afin d’automatiser la conversion du fichier markdown sur lequel vous
-travaillez.</p>
-<p>Vous pouvez aussi utiliser le template pandoc, le filtre fr-nbsp.lua
-et le fichier CSS utilisé par défaut.</p>
+<p>Récupérez ce dossier (sur <a href="https://forge.aeif.fr/eyssette/a4">Gitlab</a> ou sur <a href="https://github.com/eyssette/a4">Github</a>) en local et ouvrez-le avec VSCode. Une tâche pour VSCode est définie dans le dossier .vscode afin d’automatiser la conversion du fichier markdown sur lequel vous travaillez.</p>
+<p>Vous pouvez aussi utiliser le template pandoc, le filtre fr-nbsp.lua et le fichier CSS utilisé par défaut.</p>
 <h2 id="crédits">Crédits</h2>
 <p>Cet outil est distribué gratuitement et sous licence libre.</p>
-<p>Il dépend des outils libres suivants : <a
-href="https://pandoc.org/">pandoc</a> et <a
-href="https://github.com/InseeFrLab/pandoc-filter-fr-nbsp">fr-nbsp</a>
-pour les versions sur forge ou en local, et <a
-href="https://marked.js.org/">marked</a>, <a
-href="https://github.com/cure53/DOMPurify">DOMPurify</a> et <a
-href="https://github.com/nodeca/js-yaml">js-yaml</a> pour la version en
-ligne.</p>
+<p>Il dépend des outils libres suivants : <a href="https://pandoc.org/">pandoc</a> et <a href="https://github.com/InseeFrLab/pandoc-filter-fr-nbsp">fr-nbsp</a> pour les versions sur forge ou en local, et <a href="https://marked.js.org/">marked</a>, <a href="https://github.com/cure53/DOMPurify">DOMPurify</a> et <a href="https://github.com/nodeca/js-yaml">js-yaml</a> pour la version en ligne.</p>
 </body>
 </html>
