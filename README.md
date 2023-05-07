@@ -71,8 +71,7 @@ Vous pouvez aussi utiliser le template pandoc, le filtre fr-nbsp.lua et le fichi
 
 ## Syntaxe markdown autorisée
 
-Hormis la syntaxe ordinaire, on peut aussi utiliser des codes emojis (p.ex. `:smile:`)
-et les blocs admonitions :
+Hormis la syntaxe ordinaire, on peut aussi utiliser des codes emojis (p.ex. `:smile:`), le surlignement (`==texte surligné==`) et les blocs admonitions :
 
 ```
 ::: warning
