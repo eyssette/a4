@@ -31,19 +31,23 @@ Voici un exemple avec tous ces paramètres (on n'est pas obligé de tous les uti
 ```yaml
 ---
 pages: 1
-colonnes: 3
-espacementColonnes: 30px
+colonnes: 2
+espacementColonnes: 20px
+mx: 20px
+my: 20px
 paysage: true
-copies: 3
+copies: 2
 maths: true
 ---
 ```
 
 - `pages` et `colonnes` indiquent respectivement le nombre de pages et de colonnes
 - on peut définir l'espacement en pixels entre les colonnes : `espacementColonnes: 30px`
+- `mx` et `my` définissent les marges à gauche et à droite (pour `mx`), en haut et en bas (pour `my`)
 - pour une impression en format paysage, on met `paysage: true`
-- pour recopier plusieurs fois le contenu du document (par exemple pour mettre deux fois le même contenu sur une page A4 pour ensuite découper sa page et distribuer du A5), il faut indiquer le nombre de copies ainsi : `copies: 3` pour trois copies.
-- `maths: true` permet d'écrire des formules mathématiques avec la syntaxe `\\(FORMULE\\)` ou `$$FORMULE$$`. Si la formule est trop longue, la mise en page risque cependant d'être perturbée et il faudra la retoucher manuellement.
+- pour recopier plusieurs fois le contenu du document (par exemple pour mettre deux fois le même contenu sur une page A4 pour ensuite découper sa page et distribuer du A5), il faut indiquer le nombre de copies ainsi : `copies: 2` pour deux copies.
+- `maths: true` permet d'écrire des formules mathématiques avec la syntaxe `$FORMULE$` ou `$$FORMULE$$`. Si la formule est trop longue, la mise en page risque cependant d'être perturbée et il faudra la retoucher manuellement.
+
 
 ## Trois usages possibles
 
@@ -65,8 +69,20 @@ Récupérez ce dossier (sur [Gitlab](https://forge.aeif.fr/eyssette/a4) ou sur [
 
 Vous pouvez aussi utiliser le template pandoc, le filtre fr-nbsp.lua et le fichier CSS utilisé par défaut.
 
+## Syntaxe markdown autorisée
+
+Hormis la syntaxe ordinaire, on peut aussi utiliser des codes emojis (p.ex. `:smile:`)
+et les blocs admonitions :
+
+```
+::: warning
+Attention, bloc spécial de texte
+:::
+```
+
+
 ## Crédits
 
 Cet outil est distribué gratuitement et sous licence libre.
 
-Il dépend des outils libres suivants : [pandoc](https://pandoc.org/) et [fr-nbsp](https://github.com/InseeFrLab/pandoc-filter-fr-nbsp) pour les versions sur forge ou en local, et [marked](https://marked.js.org/), [DOMPurify](https://github.com/cure53/DOMPurify) et [js-yaml](https://github.com/nodeca/js-yaml) pour la version en ligne.
+Il dépend des outils libres suivants : [pandoc](https://pandoc.org/) et [fr-nbsp](https://github.com/InseeFrLab/pandoc-filter-fr-nbsp) pour les versions sur forge ou en local, et [Markdown-it](https://github.com/markdown-it/markdown-it), [Markdown-it-Emoji](https://github.com/markdown-it/markdown-it-emoji), [Markdown-it-Admonition](https://github.com/docarys/markdown-it-admonition)  et [js-yaml](https://github.com/nodeca/js-yaml) pour la version en ligne.
