@@ -17,9 +17,9 @@ Ce site (sur [Gitlab](https://forge.aeif.fr/eyssette/a4) ou sur [Github](https:/
 
 ## Quelques exemples
 
-- Impression sur une page : [rendu](https://eyssette.forge.aeif.fr/a4/test-1page), [source](https://eyssette.forge.aeif.fr/a4/test-1page.md)
-- Impression sur 3 colonnes, avec répétition du même contenu : [rendu](https://eyssette.forge.aeif.fr/a4/test-3colonnes-copies), [source](https://eyssette.forge.aeif.fr/a4/test-3colonnes-copies.md)
-- Impression sur 2 pages et 3 colonnes : [rendu](https://eyssette.forge.aeif.fr/a4/test-2pages), [source](https://eyssette.forge.aeif.fr/a4/test-2pages.md)
+- Impression sur une page : [rendu](https://eyssette.forge.aeif.fr/a4/test-1page), [source](https://forge.aeif.fr/eyssette/a4/-/blob/main/test-1page.md?plain=1)
+- Impression sur 3 colonnes, avec répétition du même contenu : [rendu](https://eyssette.forge.aeif.fr/a4/test-3colonnes-copies), [source](https://forge.aeif.fr/eyssette/a4/-/blob/main/test-3colonnes-copies.md?plain=1)
+- Impression sur 2 pages et 3 colonnes : [rendu](https://eyssette.forge.aeif.fr/a4/test-2pages), [source](https://forge.aeif.fr/eyssette/a4/-/blob/main/test-2pages.md?plain=1)
 
 
 ## Configuration de l'impression
