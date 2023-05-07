@@ -67,7 +67,28 @@
 	<body>
 		<h1>Mise en forme automatique au format A4</h1>
 		<p>Copier-coller votre markdown ici et cliquer sur le bouton “Convertir”</p>
-		<textarea id="input"></textarea>
+		<textarea id="input">---
+pages: 1
+colonnes: 3
+espacementColonnes: 30px
+copies: 3
+paysage: true
+mx: 10px
+my: 10px
+maths: false
+---
+
+<!-- Vous pouvez modifier comme vous le souhaitez les paramètres ci-dessus et copier-coller ensuite votre markdown. -->
+
+# Titre
+
+## Titre 2
+
+### Titre 3
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi condimentum rutrum ornare. Proin vel mi euismod, egestas nisl nec, laoreet quam. Morbi eu urna id lorem venenatis convallis. Nam facilisis rutrum lacus, sed euismod enim ultricies vitae. Nulla nec posuere eros. Praesent maximus ligula urna. Quisque dapibus vel risus id dignissim. Sed rhoncus enim pharetra odio rhoncus vulputate. Curabitur sapien erat, fringilla placerat accumsan eget, gravida nec elit. Maecenas id interdum ligula, a efficitur dui. Maecenas tincidunt, risus in venenatis porta, neque magna interdum nibh, eu fringilla est lorem ac tellus. Mauris erat massa, ultricies ut posuere quis, molestie a lacus. Etiam velit eros, mollis sit amet est ut, sollicitudin feugiat metus. Ut orci enim, lacinia ac velit et, auctor dapibus urna.
+
+</textarea>
 		<button onclick="convert()">Convertir</button>
 		<footer>Outil libre et gratuit, créé par <a href="http://eyssette.github.io/">Cédric Eyssette</a>. Plus d'informations sur la <a href="https://eyssette.forge.aeif.fr/a4/">page d'accueil</a>.</footer>
 		<script
