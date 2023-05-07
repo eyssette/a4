@@ -61,7 +61,10 @@
 					.replaceAll(" ;", "&nbsp;;")
 					.replaceAll(" :", "&nbsp;:")
 					.replaceAll(" »", "&nbsp;»")
-					.replaceAll("« ", "«&nbsp;");
+					.replaceAll("« ", "«&nbsp;")
+					.replace(/\$\$(.*?)\$\$/g, '&#92;[$1&#92;]')
+					.replace(/\$(.*?)\$/g, '&#92;\($1&#92;\)');
+
 				let copies = "";
 				if (yaml && typeof params.copies != "undefined") {
 					for (let index = 0; index < params.copies; index++) {
