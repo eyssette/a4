@@ -80,6 +80,10 @@ Attention, bloc spécial de texte
 :::
 ```
 
+On peut aussi utiliser des balises HTML et notamment la balise `<style></style>` à l'intérieur de son document afin de modifier la feuille de style CSS.
+
+On peut insérer des images avec la syntaxe Markdown habituelle : `![](URL)` mais le redimensionnement des images ne se fera pas automatiquement. On peut cependant utiliser la balise `<style>` afin de faire des modifications en CSS pour imposer une taille maximum de l'image (par exemple : `<style>img {max-height:100px}</style>`).
+
 
 ## Crédits
 

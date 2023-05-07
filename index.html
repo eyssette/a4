@@ -22,10 +22,10 @@
 </ol>
 <h2 id="quelques-exemples">Quelques exemples</h2>
 <ul>
-<li>Impression sur une page : <a href="https://eyssette.forge.aeif.fr/a4/test-1page">rendu</a>, <a href="https://eyssette.forge.aeif.fr/a4/test-1page.md">fichier source</a></li>
-<li>Impression sur 3 colonnes, avec répétition du même contenu : <a
-href="https://eyssette.forge.aeif.fr/a4/test-3colonnes-copies">rendu</a>, <a href="https://eyssette.forge.aeif.fr/a4/test-3colonnes-copies.md">fichier source</a></li>
-<li>Impression sur 2 pages et 3 colonnes : <a href="https://eyssette.forge.aeif.fr/a4/test-2pages">rendu</a>, <a href="https://eyssette.forge.aeif.fr/a4/test-2pages.md">fichier source</a></li>
+<li>Impression sur une page : <a href="https://eyssette.forge.aeif.fr/a4/test-1page">rendu</a>, <a href="https://eyssette.forge.aeif.fr/a4/test-1page.md">source</a></li>
+<li>Impression sur 3 colonnes, avec répétition du même contenu : <a href="https://eyssette.forge.aeif.fr/a4/test-3colonnes-copies">rendu</a>,
+<a href="https://eyssette.forge.aeif.fr/a4/test-3colonnes-copies.md">source</a></li>
+<li>Impression sur 2 pages et 3 colonnes : <a href="https://eyssette.forge.aeif.fr/a4/test-2pages">rendu</a>, <a href="https://eyssette.forge.aeif.fr/a4/test-2pages.md">source</a></li>
 </ul>
 <h2 id="configuration-de-limpression">Configuration de l’impression</h2>
 <p>Pour configurer l’impression, il faut ajouter un en-tête au début de votre document markdown. Plusieurs paramètres sont disponibles.</p>
@@ -33,19 +33,21 @@ href="https://eyssette.forge.aeif.fr/a4/test-3colonnes-copies">rendu</a>, <a hre
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pages</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colonnes</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span>
-<class="fu">espacementColonnes</span><span class="kw">:</span><span class="at"> </span><span class="dv">30px</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">paysage</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<class="fu">copies</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">maths</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colonnes</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">espacementColonnes</span><span class="kw">:</span><span class="at"> 20px</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mx</span><span class="kw">:</span><span class="at"> 20px</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">my</span><span class="kw">:</span><span class="at"> 20px</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">paysage</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">copies</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">maths</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <ul>
 <li><code>pages</code> et <code>colonnes</code> indiquent respectivement le nombre de pages et de colonnes</li>
-<li>on peut définir l'espacement en pixels entre les colonnes : <code>espacementColonnes: 30px</code></li>
-<li>pour une impression en format paysage, on met
-<code>paysage: true</code></li>
-<li>pour recopier plusieurs fois le contenu du document (par exemple pour mettre deux fois le même contenu sur une page A4 pour ensuite découper sa page et distribuer du A5), il faut lister le nombre de copies ainsi : <code>copies: 3</code> pour trois copies.</li>
-<li><code>maths: true</code> permet d’écrire des formules mathématiques avec la syntaxe <code>\\(FORMULE\\)</code> ou <code>$$FORMULE$$</code>. Si la formule est trop longue, la mise en page risque cependant d’être perturbée et il faudra la retoucher manuellement.</li>
+<li>on peut définir l’espacement en pixels entre les colonnes : <code>espacementColonnes: 30px</code></li>
+<li><code>mx</code> et <code>my</code> définissent les marges à gauche et à droite (pour <code>mx</code>), en haut et en bas (pour <code>my</code>)</li>
+<li>pour une impression en format paysage, on met <code>paysage: true</code></li>
+<li>pour recopier plusieurs fois le contenu du document (par exemple pour mettre deux fois le même contenu sur une page A4 pour ensuite découper sa page et distribuer du A5), il faut indiquer le nombre de copies ainsi : <code>copies: 2</code> pour deux copies.</li>
+<li><code>maths: true</code> permet d’écrire des formules mathématiques avec la syntaxe <code>$FORMULE$</code> ou <code>$$FORMULE$$</code>. Si la formule est trop longue, la mise en page risque cependant d’être perturbée et il faudra la retoucher manuellement.</li>
 </ul>
 <h2 id="trois-usages-possibles">Trois usages possibles</h2>
 <h3 id="conversion-en-ligne">1/ Conversion en ligne</h3>
@@ -56,8 +58,19 @@ class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="
 <h3 id="en-local">3/ En local</h3>
 <p>Récupérez ce dossier (sur <a href="https://forge.aeif.fr/eyssette/a4">Gitlab</a> ou sur <a href="https://github.com/eyssette/a4">Github</a>) en local et ouvrez-le avec VSCode. Une tâche pour VSCode est définie dans le dossier .vscode afin d’automatiser la conversion du fichier markdown sur lequel vous travaillez.</p>
 <p>Vous pouvez aussi utiliser le template pandoc, le filtre fr-nbsp.lua et le fichier CSS utilisé par défaut.</p>
+<h2 id="syntaxe-markdown-autorisée">Syntaxe markdown autorisée</h2>
+<p>Hormis la syntaxe ordinaire, on peut aussi utiliser des codes emojis (p.ex. <code>:smile:</code>) et les blocs admonitions :</p>
+<pre><code>::: warning
+Attention, bloc spécial de texte
+:::</code></pre>
+<p>On peut aussi utiliser des balises HTML et notamment la balise
+<code>&lt;style&gt;&lt;/style&gt;</code> à l’intérieur de son document afin de modifier la feuille de style CSS.</p>
+<p>On peut insérer des images avec la syntaxe Markdown habituelle :
+<code>![](URL)</code> mais le redimensionnement des images ne se fera pas automatiquement. On peut cependant utiliser la balise
+<code>&lt;style&gt;</code> afin de faire des modifications en CSS pour imposer une taille maximum de l’image (par exemple :
+<code>&lt;style&gt;img {max-height:100px}&lt;/style&gt;</code>).</p>
 <h2 id="crédits">Crédits</h2>
 <p>Cet outil est distribué gratuitement et sous licence libre.</p>
-<p>Il dépend des outils libres suivants : <a href="https://pandoc.org/">pandoc</a> et <a href="https://github.com/InseeFrLab/pandoc-filter-fr-nbsp">fr-nbsp</a> pour les versions sur forge ou en local, et <a href="https://marked.js.org/">marked</a>, <a href="https://github.com/cure53/DOMPurify">DOMPurify</a> et <a href="https://github.com/nodeca/js-yaml">js-yaml</a> pour la version en ligne.</p>
+<p>Il dépend des outils libres suivants : <a href="https://pandoc.org/">pandoc</a> et <a href="https://github.com/InseeFrLab/pandoc-filter-fr-nbsp">fr-nbsp</a> pour les versions sur forge ou en local, et <a href="https://github.com/markdown-it/markdown-it">Markdown-it</a>, <a href="https://github.com/markdown-it/markdown-it-emoji">Markdown-it-Emoji</a>, <a href="https://github.com/docarys/markdown-it-admonition">Markdown-it-Admonition</a> et <a href="https://github.com/nodeca/js-yaml">js-yaml</a> pour la version en ligne.</p>
 </body>
 </html>
