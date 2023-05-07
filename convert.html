@@ -153,9 +153,9 @@
 					if (newContentHeight > maxHeight) {
 						ratio = newContentHeight / stepReduceFontSize;
 						newFontSize -= ratio;
-						${yaml && typeof params.maths !== "undefined" && params.maths === true && !isFirefox ? "" : "if (newFontSize > trackReduction) {"}
+						${(yaml && typeof params.maths !== "undefined" && params.maths === true) || isFirefox ? "" : "if (newFontSize > trackReduction) {"}
 							document.body.style.fontSize = newFontSize + "px";
-							${yaml && typeof params.maths !== "undefined" && params.maths === true  && !isFirefox ? "" : "}"}
+							${(yaml && typeof params.maths !== "undefined" && params.maths === true) || isFirefox ? "" : "}"}
 						trackReduction = newFontSize;
 						start = timestamp;
 						
