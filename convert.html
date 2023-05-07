@@ -56,16 +56,18 @@
 				}
 				const pattern1 = new RegExp(/\s(;!%\?:€»)/, "g");
 				const pattern2 = new RegExp(/(«)\s/, "g");
-				const htmlNbsp = html
+				var htmlNbsp = html
 					.replaceAll(" !", "&nbsp;!")
 					.replaceAll(" ?", "&nbsp;?")
 					.replaceAll(" ;", "&nbsp;;")
 					.replaceAll(" :", "&nbsp;:")
 					.replaceAll(" »", "&nbsp;»")
-					.replaceAll("« ", "«&nbsp;")
+					.replaceAll("« ", "«&nbsp;");
+				if (yaml && typeof params.maths !== "undefined" && params.maths === true) {
+					htmlNbsp = html
 					.replace(/\$\$(.*?)\$\$/g, '&#92;[$1&#92;]')
 					.replace(/\$(.*?)\$/g, '&#92;\($1&#92;\)');
-
+				}
 				let copies = "";
 				if (yaml && typeof params.copies != "undefined") {
 					for (let index = 0; index < params.copies; index++) {
