@@ -1,58 +1,126 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Mise en forme automatique au format A4</title>
-	<meta charset="utf-8">
-	<style>h1, p{text-align:center}textarea{width:95%;max-width:800px;display:block;margin:auto;margin-top:30px;height:300px;font-family:monospace;font-size:14px;}button{margin:auto; display: block; margin-top: 20px}</style>
-</head>
-<body>
-	<h1>Mise en forme automatique au format A4</h1>
-	<p>Copier-coller votre markdown ici et cliquer sur le bouton “Convertir”</p>
-	<textarea id="input"></textarea>
-	<button onclick="convert()">Convertir</button>
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.2/purify.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
-	<script>
-		function convert() {
-			const input = document.getElementById("input").value;
-			const yamlRegex = /^---\n([\s\S]*?)\n---\n/;
-			const match = input.match(yamlRegex);
-			const yaml = match ? match[1] : null;
-			const mdWithoutYaml = input.replace(yamlRegex, "")
-			const html = DOMPurify.sanitize(marked.parse(mdWithoutYaml));
-			let params
-			if (yaml) {
-				params = jsyaml.load(yaml);
+	<head>
+		<title>Mise en forme automatique au format A4</title>
+		<meta charset="utf-8" />
+		<style>
+			h1,
+			p {
+				text-align: center;
 			}
-			const pattern1 = new RegExp(/\s(;!%\?:€»)/, "g");
-			const pattern2 = new RegExp(/(«)\s/, "g");
-			const htmlNbsp = html.replaceAll(' !','&nbsp;!').replaceAll(' ?','&nbsp;?').replaceAll(' ;','&nbsp;;').replaceAll(' :','&nbsp;:').replaceAll(' »','&nbsp;»').replaceAll('« ','«&nbsp;');
-			let copies = "";
-			if (yaml && typeof params.copies != "undefined") {
-				for (let index = 0; index < params.copies ; index++) {
-					copies = copies + htmlNbsp;
+			textarea {
+				width: 95%;
+				max-width: 800px;
+				display: block;
+				margin: auto;
+				margin-top: 30px;
+				height: 300px;
+				font-family: monospace;
+				font-size: 14px;
+			}
+			button {
+				margin: auto;
+				display: block;
+				margin-top: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Mise en forme automatique au format A4</h1>
+		<p>Copier-coller votre markdown ici et cliquer sur le bouton “Convertir”</p>
+		<textarea id="input"></textarea>
+		<button onclick="convert()">Convertir</button>
+		<script
+			type="text/javascript"
+			src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.2/purify.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/markdown-it@13.0.1/dist/markdown-it.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/markdown-it-emoji@2.0.2/dist/markdown-it-emoji.min.js"></script>
+		<script>
+			var md=window.markdownit({html:!0}).use(window.markdownitEmoji)
+			/* https://github.com/docarys/markdown-it-admonition */
+			options={};var minMarkers=3,markerStr=options.marker||"!",markerChar=markerStr.charCodeAt(0),markerLen=markerStr.length,validate=validateDefault,render=renderDefault,type="",title=null,types=options.types||["note","abstract","info","tip","success","question","warning","failure","danger","bug","example","quote"];function renderDefault(e,r,n,t,i){var a=e[r];return"admonition_open"===a.type?e[r].attrPush(["class","admonition "+a.info]):"admonition_title_open"===a.type&&e[r].attrPush(["class","admonition-title"]),i.renderToken(e,r,n,t,i)}function validateDefault(e){var r=e.trim().split(" ",2);return title="",type=r[0],r.length>1&&(title=e.substring(type.length+2)),types.includes(type)}function admonition(e,r,n,t){var i,a,o,l,s,d,m,p,u=!1,k=e.bMarks[r]+e.tShift[r],c=e.eMarks[r];if(markerChar!==e.src.charCodeAt(k))return!1;for(i=k+1;i<=c&&markerStr[(i-k)%markerLen]===e.src[i];i++);if((o=Math.floor((i-k)/markerLen))<minMarkers)return!1;if(i-=(i-k)%markerLen,l=e.src.slice(k,i),s=e.src.slice(i,c),!validate(s))return!1;if(t)return!0;for(a=r;!(++a>=n)&&!((k=e.bMarks[a]+e.tShift[a])<(c=e.eMarks[a])&&e.sCount[a]<e.blkIndent);)if(markerChar===e.src.charCodeAt(k)&&!(e.sCount[a]-e.blkIndent>=4)){for(i=k+1;i<=c&&markerStr[(i-k)%markerLen]===e.src[i];i++);if(!(Math.floor((i-k)/markerLen)<o||(i-=(i-k)%markerLen,(i=e.skipSpaces(i))<c))){u=!0;break}}return m=e.parentType,p=e.lineMax,e.parentType="admonition",e.lineMax=a,(d=e.push("admonition_open","div",1)).markup=l,d.block=!0,d.info=type,d.map=[r,a],(d=e.push("admonition_title_open","p",1)).markup=l+" "+type,d.map=[r,a],(d=e.push("inline","",0)).content=title,d.map=[r,e.line-1],d.children=[],(d=e.push("admonition_title_close","p",-1)).markup=l+" "+type,e.md.block.tokenize(e,r+1,a),(d=e.push("admonition_close","div",-1)).markup=e.src.slice(k,i),d.block=!0,e.parentType=m,e.lineMax=p,e.line=a+(u?1:0),!0}md.block.ruler.before("code","admonition",admonition,{alt:["paragraph","reference","blockquote","list"]}),md.renderer.rules.admonition_open=render,md.renderer.rules.admonition_title_open=render,md.renderer.rules.admonition_title_close=render,md.renderer.rules.admonition_close=render;
+		</script>
+		<script>
+			function convert() {
+				const input = document.getElementById("input").value;
+				const yamlRegex = /^---\n([\s\S]*?)\n---\n/;
+				const match = input.match(yamlRegex);
+				const yaml = match ? match[1] : null;
+				const mdWithoutYaml = input.replace(yamlRegex, "");
+				const html = DOMPurify.sanitize(md.render(mdWithoutYaml));
+				let params;
+				if (yaml) {
+					params = jsyaml.load(yaml);
 				}
-			}
+				const pattern1 = new RegExp(/\s(;!%\?:€»)/, "g");
+				const pattern2 = new RegExp(/(«)\s/, "g");
+				const htmlNbsp = html
+					.replaceAll(" !", "&nbsp;!")
+					.replaceAll(" ?", "&nbsp;?")
+					.replaceAll(" ;", "&nbsp;;")
+					.replaceAll(" :", "&nbsp;:")
+					.replaceAll(" »", "&nbsp;»")
+					.replaceAll("« ", "«&nbsp;");
+				let copies = "";
+				if (yaml && typeof params.copies != "undefined") {
+					for (let index = 0; index < params.copies; index++) {
+						copies = copies + htmlNbsp;
+					}
+				}
 
-			const template = `<!DOCTYPE html>
+				const template = `<!DOCTYPE html>
 			<html>
 			<head>
 				<title>Markdown to HTML Result</title>
 				<meta charset="utf-8">
 				<style>h2,h3,h4,h5,h6{break-after:avoid}body{font-family:Garamond,Philosopher,"Times New Roman",Times,serif;text-align:justify;line-height:1.15;column-gap:25px;orphans:5}h1{font-size:1.2em;text-align:center;margin-bottom:1em}h2{font-size:1.05em;margin-top:1em!important;margin-bottom:.5em!important}body>h2:first-child{margin-top:0!important}h3,h4,h5,h6{font-size:1em;margin-top:.75em;margin-bottom:.5em;font-weight:400}h3{text-decoration:underline}code{color:#000!important;font-size:100%;font-variant:small-caps;font-family:inherit;background:0 0!important}ol,ul{padding-left:15px}p{margin-top:0.5em}
 				*{margin:0;overflow-wrap: break-word;}body{font-size:100px;width:21cm;margin:10px;padding:0}@media print{@page{size:A4;margin:10px;}body{margin:auto}}
-				${(yaml && typeof params.columns !== "undefined" ? "body{ columns:"+params.columns+"}": "")}
-				${(yaml && typeof params.colonnes !== "undefined" ? "body{ columns:"+params.colonnes+"}": "")}
-				${(yaml && typeof params.espacementColonnes !== "undefined" ? "body{ column-gap:"+params.espacementColonnes+"}": "")}
-				${(yaml && typeof params.columnGap !== "undefined" ? "body{ column-gap:"+params.columnGap+"}": "")}
-				${(yaml && typeof params.paysage !== "undefined" || yaml && typeof params.landscape !== "undefined" ? "body{ width:29.7cm!important}@media print{@page{size:A4 landscape!important;}}": "")}
+				${
+					yaml && typeof params.columns !== "undefined"
+						? "body{ columns:" + params.columns + "}"
+						: ""
+				}
+				${
+					yaml && typeof params.colonnes !== "undefined"
+						? "body{ columns:" + params.colonnes + "}"
+						: ""
+				}
+				${
+					yaml && typeof params.espacementColonnes !== "undefined"
+						? "body{ column-gap:" + params.espacementColonnes + "}"
+						: ""
+				}
+				${
+					yaml && typeof params.columnGap !== "undefined"
+						? "body{ column-gap:" + params.columnGap + "}"
+						: ""
+				}
+				${
+					(yaml && typeof params.paysage !== "undefined") ||
+					(yaml && typeof params.landscape !== "undefined")
+						? "body{ width:29.7cm!important}@media print{@page{size:A4 landscape!important;}}"
+						: ""
+				}
 				</style>
-				${(yaml && typeof params.maths !== "undefined" && params.maths === true ? "<script src=\"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js\" type=\"text/javascript\"><\/script>" : "")}
+				${
+					yaml && typeof params.maths !== "undefined" && params.maths === true
+						? '<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"><\/script>'
+						: ""
+				}
 				<script>
-				${(yaml && typeof params.pages !== "undefined" ? "let nPages = "+params.pages+"; ": "let nPages=1; ")}	
+				${
+					yaml && typeof params.pages !== "undefined"
+						? "let nPages = " + params.pages + "; "
+						: "let nPages=1; "
+				}	
 			let fontSize = 100;
-				${(yaml && typeof params.paysage !== "undefined" || yaml && typeof params.landscape !== "undefined" ? "let maxHeight = 774*nPages": "let maxHeight = 1025*nPages; ")}
+				${
+					(yaml && typeof params.paysage !== "undefined") ||
+					(yaml && typeof params.landscape !== "undefined")
+						? "let maxHeight = 774*nPages"
+						: "let maxHeight = 1025*nPages; "
+				}
 			let stepReduceFontSize = maxHeight * 2.5;
 			let ratio;
 			let trackReduction = 0
@@ -65,9 +133,21 @@
 					if (newContentHeight > maxHeight) {
 						ratio = newContentHeight / stepReduceFontSize
 						newFontSize -= ratio;
-						${(yaml && typeof params.maths !== "undefined" && params.maths === true ? "": "if (newFontSize > trackReduction) {")}
+						${
+							yaml &&
+							typeof params.maths !== "undefined" &&
+							params.maths === true
+								? ""
+								: "if (newFontSize > trackReduction) {"
+						}
 							document.body.style.fontSize = newFontSize + "px";
-							${(yaml && typeof params.maths !== "undefined" && params.maths === true ? "": "}")}
+							${
+								yaml &&
+								typeof params.maths !== "undefined" &&
+								params.maths === true
+									? ""
+									: "}"
+							}
 						trackReduction = newFontSize
 						start = timestamp;
 						
@@ -86,13 +166,13 @@
 			<\/script>
 			</head>
 			<body>
-				${(yaml && typeof params.copies !== "undefined" ? copies : htmlNbsp)}
+				${yaml && typeof params.copies !== "undefined" ? copies : htmlNbsp}
 			</body>
 			</html>`;
-			const result = window.open();
-			result.document.write(template);
-			result.document.close();
-		}
-	</script>
-</body>
+				const result = window.open();
+				result.document.write(template);
+				result.document.close();
+			}
+		</script>
+	</body>
 </html>
