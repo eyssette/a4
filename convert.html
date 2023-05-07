@@ -46,7 +46,8 @@
 				const yamlRegex = /^---\n([\s\S]*?)\n---\n/;
 				const match = input.match(yamlRegex);
 				const yaml = match ? match[1] : null;
-				const mdWithoutYaml = input.replace(yamlRegex, "");
+				var mdWithoutYaml = input.replace(yamlRegex, "");
+				mdWithoutYaml = mdWithoutYaml.replaceAll(":::","!!!")
 				const html = md.render(mdWithoutYaml);
 				let params;
 				if (yaml) {
