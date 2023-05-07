@@ -82,6 +82,16 @@
 				div.danger,div.warning{color:#b94a48;background-color:#f2dede;border-color:#eed3d7;}div.note,div.info{color:#3a87ad;background-color:#d9edf7;border-color:#bce8f1;}div.success{color:#468847;background-color:#dff0d8;border-color:#d6e9c6;}
 				div.admonition {padding:0.1em 0.2em}.admonition-title:not(:empty){margin-top:0em!important}.admonition-title:empty+p{margin-top:-0.5em}
 				${
+					yaml && typeof params.mx !== "undefined"
+						? "body{ margin-left:" + params.mx + "; margin-right:"+params.mx+";}@media print{@page{margin-right:"+params.mx+"!important}}"
+						: ""
+				}
+				${
+					yaml && typeof params.my !== "undefined"
+						? "body{ margin-top:" + params.my + "; margin-bottom:"+params.my+";}@media print{@page{margin-bottom:"+params.my+"}}"
+						: ""
+				}
+				${
 					yaml && typeof params.columns !== "undefined"
 						? "body{ columns:" + params.columns + "}"
 						: ""
