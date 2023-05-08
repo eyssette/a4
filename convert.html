@@ -219,13 +219,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi condimentum rutru
 							${(yaml && typeof params.maths !== "undefined" && params.maths === true) || isFirefox ? "" : "}"}
 						trackReduction = newFontSize;
 						start = timestamp;
-						
+						requestAnimationFrame(update);
 					} else if (newFontSize !== fontSize) {
 						fontSize = newFontSize;
 						document.body.style.fontSize = fontSize + "px";
-					}
-					if (newFontSize > 0) {
-						requestAnimationFrame(update);
 					}
 				}
 				requestAnimationFrame(update);

@@ -56,12 +56,10 @@
 						newFontSize -= newContentHeight / stepReduceFontSize;
 						document.body.style.fontSize = newFontSize + "px";
 						start = timestamp;
+						requestAnimationFrame(update);
 					} else if (newFontSize !== fontSize) {
 						fontSize = newFontSize;
 						document.body.style.fontSize = fontSize + "px";
-					}
-					if (newFontSize > 0) {
-						requestAnimationFrame(update);
 					}
 				}
 				requestAnimationFrame(update);
