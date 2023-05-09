@@ -19,7 +19,7 @@ h2 {
 	break-after: avoid;
 }
 
-body > h2:first-child {
+body > h2:first-child, body > p:first-child {
 	margin-top: 0 !important;
 }
 
