@@ -205,6 +205,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi condimentum rutru
 			let stepReduceFontSize = maxHeight * 2.5;
 			let ratio;
 			let trackReduction = 0;
+			let animation;
 			function adjustFontSize() {
 				let newFontSize = fontSize;
 				let start = null;
@@ -219,13 +220,21 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi condimentum rutru
 							${(yaml && typeof params.maths !== "undefined" && params.maths === true) || isFirefox ? "" : "}"}
 						trackReduction = newFontSize;
 						start = timestamp;
-						requestAnimationFrame(update);
-					} else if (newFontSize !== fontSize) {
-						fontSize = newFontSize;
-						document.body.style.fontSize = fontSize + "px";
+						animation = requestAnimationFrame(update);
+					} else {
+						if (newFontSize !== fontSize) {
+							fontSize = newFontSize;
+							document.body.style.fontSize = fontSize + "px";
+						}						
+						if (trackReduction == fontSize) {
+							window.removeEventListener("load", adjustFontSize)
+							window.removeEventListener("resize", adjustFontSize)
+							cancelAnimationFrame(animation);
+							window.print();
+						}
 					}
 				}
-				requestAnimationFrame(update);
+				animation = requestAnimationFrame(update);
 			}
 			window.addEventListener("load", adjustFontSize);
 			window.addEventListener("resize", adjustFontSize);
