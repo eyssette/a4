@@ -46,6 +46,9 @@
 			let fontSize = 100;
 			let maxHeight = $if(paysage)$774$else$1025$endif$ * nPages;
 			let stepReduceFontSize = maxHeight * 2.5;
+			let ratio;
+			let trackReduction = 0;
+			let animation;
 			function adjustFontSize() {
 				let newFontSize = fontSize;
 				let start = null;
@@ -53,16 +56,26 @@
 					if (!start) start = timestamp;
 					let newContentHeight = document.body.clientHeight;
 					if (newContentHeight > maxHeight) {
-						newFontSize -= newContentHeight / stepReduceFontSize;
+						ratio = newContentHeight / stepReduceFontSize;
+						newFontSize -= ratio;
 						document.body.style.fontSize = newFontSize + "px";
+						trackReduction = newFontSize;
 						start = timestamp;
-						requestAnimationFrame(update);
-					} else if (newFontSize !== fontSize) {
-						fontSize = newFontSize;
-						document.body.style.fontSize = fontSize + "px";
+						animation = requestAnimationFrame(update);
+					} else {
+						if (newFontSize !== fontSize) {
+							fontSize = newFontSize;
+							document.body.style.fontSize = fontSize + "px";
+						}						
+						if (trackReduction == fontSize) {
+							window.removeEventListener("load", adjustFontSize)
+							window.removeEventListener("resize", adjustFontSize)
+							cancelAnimationFrame(animation);
+							window.print();
+						}
 					}
 				}
-				requestAnimationFrame(update);
+				animation = requestAnimationFrame(update);
 			}
 			window.addEventListener("load", adjustFontSize);
 			window.addEventListener("resize", adjustFontSize);
