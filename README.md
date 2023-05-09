@@ -63,6 +63,8 @@ Copiez-coller votre markdown dans cet outil de conversion en ligne et cliquez su
 Clonez ce dossier (sur [Gitlab](https://forge.aeif.fr/eyssette/a4) ou sur [Github](https://github.com/eyssette/a4)) et créez des fichiers markdown dans votre dossier cloné.
 Ils seront automatiquement convertis et accessibles en ligne.
 
+Sur Github, il faudra donner la permission : `Read and Write` dans : `Settings/Actions/General/Workflow permissions`
+
 ### 3/ En local
 
 Récupérez ce dossier (sur [Gitlab](https://forge.aeif.fr/eyssette/a4) ou sur [Github](https://github.com/eyssette/a4)) en local et ouvrez-le avec VSCode. Une tâche pour VSCode est définie dans le dossier .vscode afin d'automatiser la conversion du fichier markdown sur lequel vous travaillez.
