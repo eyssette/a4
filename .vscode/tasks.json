@@ -6,7 +6,7 @@
 		{
 			"label": "Create A4 page",
 			"type": "shell",
-			"command": "pandoc -f markdown+mark+lists_without_preceding_blankline+emoji -t html --lua-filter=pandoc/fr-nbsp.lua --lua-filter=pandoc/copies.lua ${file} -o ${fileBasenameNoExtension}.html -s --template=pandoc/template.html ",
+			"command": "pandoc -f markdown+mark+lists_without_preceding_blankline+emoji+hard_line_breaks -t html --lua-filter=pandoc/fr-nbsp.lua --lua-filter=pandoc/copies.lua ${file} -o ${fileBasenameNoExtension}.html -s --template=pandoc/template.html ",
 			"group": {
 				"kind": "build",
 				"isDefault": true

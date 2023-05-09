@@ -96,3 +96,9 @@ blockquote {
 	font-family: "ETBembo", "et-book", "Minion Pro", Garamond, Philosopher,
 		"Times New Roman", Times, serif;
 }
+
+br {
+	display: block!important;
+    margin-top: 0.25em!important;
+    content: ""!important;
+}

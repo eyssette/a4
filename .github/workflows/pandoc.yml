@@ -18,7 +18,7 @@ jobs:
             for f in $(find . -type f -name '*.md' ! -name 'README.md'); do
               filename=$(basename "$f" .md);
               if [ ! -f "$filename.html" ]; then
-                pandoc -f markdown+mark+lists_without_preceding_blankline+emoji -t html --lua-filter=pandoc/fr-nbsp.lua --lua-filter=pandoc/copies.lua "$f" -o ".public/$filename.html" -s --template=pandoc/template.html;
+                pandoc -f markdown+mark+lists_without_preceding_blankline+emoji+hard_line_breaks -t html --lua-filter=pandoc/fr-nbsp.lua --lua-filter=pandoc/copies.lua "$f" -o ".public/$filename.html" -s --template=pandoc/template.html;
               fi
             done
             cp -r * .public
