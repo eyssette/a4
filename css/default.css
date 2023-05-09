@@ -19,7 +19,8 @@ h2 {
 	break-after: avoid;
 }
 
-body > h2:first-child, body > p:first-child {
+body > h2:first-child,
+body > p:first-child {
 	margin-top: 0 !important;
 }
 
@@ -86,5 +87,10 @@ div.success {
 }
 
 mark {
-	background-color:#f9e387
+	background-color: #f9e387;
+}
+
+blockquote {
+	font-family: "ETBembo", "et-book", "Minion Pro", Garamond, Philosopher,
+		"Times New Roman", Times, serif;
 }
