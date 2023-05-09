@@ -20,7 +20,9 @@ h2 {
 }
 
 body > h2:first-child,
-body > p:first-child {
+body > p:first-child,
+body > blockquote:first-child,
+body > blockquote:first-child > p:first-child {
 	margin-top: 0 !important;
 }
 
