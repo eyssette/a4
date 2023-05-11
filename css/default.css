@@ -1,5 +1,5 @@
 body {
-	font-family: Garamond, Philosopher, "Times New Roman", Times, serif;
+	font-family: Garamond, Philosopher, "Times New Roman", Times, serif!important;
 	text-align: justify;
 	line-height: 1.15;
 	column-gap: 25px;
@@ -94,7 +94,7 @@ mark {
 
 blockquote {
 	font-family: "ETBembo", "et-book", "Minion Pro", Garamond, Philosopher,
-		"Times New Roman", Times, serif;
+		"Times New Roman", Times, serif!important;
 }
 
 br {
