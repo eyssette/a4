@@ -116,8 +116,22 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi condimentum rutru
 				if (yaml) {
 					params = jsyaml.load(yaml);
 				}
-				const html = md.render(mdWithoutYaml);
-				var htmlNbsp = html
+				let html = md.render(mdWithoutYaml);
+				if (yaml && typeof params.maths !== "undefined" && params.maths === true) {
+					/* Gestion des caractères "%" et "€" dans les équations Latex */
+					html = html
+						.replace(/\\\((.*?)\\\)/g, function(match, equation) {
+							equation = equation.replace(/\\?%/g, '&#92;\%');
+							equation = equation.replace(/€/g, '&#92;textrm{€}');
+							return '&#92;(' + equation + '&#92;)';
+						})
+						.replace(/\\\[(.*?)\\\]/g, function(match, equation) {
+							equation = equation.replace(/\\?%/g, '&#92;\%');
+							equation = equation.replace(/€/g, '&#92;textrm{€}');
+							return '&#92;[' + equation + '&#92;]';
+						})
+				}
+				html = html
 					.replaceAll(" !", "&nbsp;!")
 					.replaceAll(" ?", "&nbsp;?")
 					.replaceAll(" ;", "&nbsp;;")
@@ -127,7 +141,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi condimentum rutru
 				let copies = "";
 				if (yaml && typeof params.copies != "undefined") {
 					for (let index = 0; index < params.copies; index++) {
-						copies = copies + htmlNbsp;
+						copies = copies + html;
 					}
 				}
 
@@ -237,7 +251,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi condimentum rutru
 			<\/script>
 			</head>
 			<body>
-				${yaml && typeof params.copies !== "undefined" ? copies : htmlNbsp}
+				${yaml && typeof params.copies !== "undefined" ? copies : html}
 			</body>
 			</html>`;
 				const result = window.open();
