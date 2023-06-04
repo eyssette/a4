@@ -122,6 +122,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi condimentum rutru
 						.replace(/\$\$(.*?)\$\$/g, function(match, equation) {
 							equation = equation.replace(/\\?%/g, '\\%');
 							equation = equation.replace(/€/g, '\\textrm{€}');
+							equation = equation.replace(/,/g, '{,}');
 							return '&#92;[' + equation + '&#92;]';
 						})
 						.replace(/\$(.*?)\$/g, function(match, equation) {
