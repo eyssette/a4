@@ -13,7 +13,7 @@
 </head>
 <body>
 <h1 id="mise-en-forme-automatique-au-format-a4">Mise en forme automatique au format A4</h1>
-<p>Ce site (sur <a href="https://forge.aeif.fr/eyssette/a4">Gitlab</a> ou sur <a href="https://github.com/eyssette/a4">Github</a>) vous propose un outil pour créer automatiquement à partir d’un fichier en markdown une page HTML à imprimer en A4, avec :</p>
+<p>Ce site (sur <a href="https://forge.apps.education.fr/eyssette/a4">Gitlab</a> ou sur <a href="https://github.com/eyssette/a4">Github</a>) vous propose un outil pour créer automatiquement à partir d’un fichier en markdown une page HTML à imprimer en A4, avec :</p>
 <ol type="1">
 <li>Un calcul automatique de la taille de police optimale pour que le contenu du document tienne sur le nombre de pages choisi, sans dépassement.</li>
 <li>La possibilité de choisir le nombre de pages, le nombre de colonnes, une impression en format paysage ou portrait</li>
@@ -22,10 +22,10 @@
 </ol>
 <h2 id="quelques-exemples">Quelques exemples</h2>
 <ul>
-<li>Impression sur une page : <a href="https://eyssette.forge.aeif.fr/a4/test-1page">rendu</a>, <a href="https://forge.aeif.fr/eyssette/a4/-/blob/main/test-1page.md?plain=1">source</a></li>
-<li>Impression sur 3 colonnes, avec répétition du même contenu : <a href="https://eyssette.forge.aeif.fr/a4/test-3colonnes-copies">rendu</a>,
-<a href="https://forge.aeif.fr/eyssette/a4/-/blob/main/test-3colonnes-copies.md?plain=1">source</a></li>
-<li>Impression sur 2 pages et 3 colonnes : <a href="https://eyssette.forge.aeif.fr/a4/test-2pages">rendu</a>, <a href="https://forge.aeif.fr/eyssette/a4/-/blob/main/test-2pages.md?plain=1">source</a></li>
+<li>Impression sur une page : <a href="https://eyssette.forge.apps.education.fr/a4/test-1page">rendu</a>, <a href="https://forge.apps.education.fr/eyssette/a4/-/blob/main/test-1page.md?plain=1">source</a></li>
+<li>Impression sur 3 colonnes, avec répétition du même contenu : <a href="https://eyssette.forge.apps.education.fr/a4/test-3colonnes-copies">rendu</a>,
+<a href="https://forge.apps.education.fr/eyssette/a4/-/blob/main/test-3colonnes-copies.md?plain=1">source</a></li>
+<li>Impression sur 2 pages et 3 colonnes : <a href="https://eyssette.forge.apps.education.fr/a4/test-2pages">rendu</a>, <a href="https://forge.apps.education.fr/eyssette/a4/-/blob/main/test-2pages.md?plain=1">source</a></li>
 </ul>
 <h2 id="configuration-de-limpression">Configuration de l’impression</h2>
 <p>Pour configurer l’impression, il faut ajouter un en-tête au début de votre document markdown. Plusieurs paramètres sont disponibles.</p>
@@ -52,12 +52,12 @@ class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="
 <h2 id="trois-usages-possibles">Trois usages possibles</h2>
 <h3 id="conversion-en-ligne">1/ Conversion en ligne</h3>
 <p>Copiez-coller votre markdown dans cet outil de conversion en ligne et cliquez sur le bouton “Convertir”:</p>
-<p><a href="https://eyssette.forge.aeif.fr/a4/convert.html" class="uri">https://eyssette.forge.aeif.fr/a4/convert.html</a></p>
+<p><a href="https://eyssette.forge.apps.education.fr/a4/convert.html" class="uri">https://eyssette.forge.apps.education.fr/a4/convert.html</a></p>
 <h3 id="sur-une-forge">2/ Sur une forge</h3>
-<p>Clonez ce dossier (sur <a href="https://forge.aeif.fr/eyssette/a4">Gitlab</a> ou sur <a href="https://github.com/eyssette/a4">Github</a>) et créez des fichiers markdown dans votre dossier cloné. Ils seront automatiquement convertis et accessibles en ligne.</p>
+<p>Clonez ce dossier (sur <a href="https://forge.apps.education.fr/eyssette/a4">Gitlab</a> ou sur <a href="https://github.com/eyssette/a4">Github</a>) et créez des fichiers markdown dans votre dossier cloné. Ils seront automatiquement convertis et accessibles en ligne.</p>
 <p>Sur Github, il faudra donner la permission : <code>Read and Write</code> dans : <code>Settings/Actions/General/Workflow permissions</code></p>
 <h3 id="en-local">3/ En local</h3>
-<p>Récupérez ce dossier (sur <a href="https://forge.aeif.fr/eyssette/a4">Gitlab</a> ou sur <a href="https://github.com/eyssette/a4">Github</a>) en local et ouvrez-le avec VSCode. Une tâche pour VSCode est définie dans le dossier .vscode afin d’automatiser la conversion du fichier markdown sur lequel vous travaillez.</p>
+<p>Récupérez ce dossier (sur <a href="https://forge.apps.education.fr/eyssette/a4">Gitlab</a> ou sur <a href="https://github.com/eyssette/a4">Github</a>) en local et ouvrez-le avec VSCode. Une tâche pour VSCode est définie dans le dossier .vscode afin d’automatiser la conversion du fichier markdown sur lequel vous travaillez.</p>
 <p>Vous pouvez aussi utiliser le template pandoc, le filtre fr-nbsp.lua et le fichier CSS utilisé par défaut.</p>
 <h2 id="syntaxe-markdown-autorisée">Syntaxe markdown autorisée</h2>
 <p>Hormis la syntaxe ordinaire, on peut aussi utiliser des codes emojis (p.ex. <code>:smile:</code>), le surlignement (<code>==texte surligné==</code>) et les blocs admonitions :</p>
