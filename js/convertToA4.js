@@ -173,3 +173,8 @@ function convert() {
 	result.document.write(template);
 	result.document.close();
 }
+
+const convertButtonElement = document.querySelector("#convertButton");
+convertButtonElement.addEventListener("click", function () {
+	convert();
+});
