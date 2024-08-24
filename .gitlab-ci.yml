@@ -1,19 +1,8 @@
 pages:
-  image:
-    name: pandoc/core
-    entrypoint: ["/bin/sh", "-c"]
   script:
     - mkdir .public
-    - |+
-      for f in $(find . -type f -name '*.md' ! -name 'README.md'); do
-        filename=$(basename "$f" .md);
-        if [ ! -f "$filename.html" ]; then
-          pandoc -f markdown -t html --lua-filter=pandoc/fr-nbsp.lua --lua-filter=pandoc/copies.lua "$f" -o ".public/$filename.html" -s --template=pandoc/template.html;
-        fi
-      done
     - cp -r * .public
     - mv .public public
-    - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)$' -exec gzip -f -k {} \;
   artifacts:
     paths:
       - public

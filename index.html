@@ -1,77 +1,43 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="fr">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>
-  Mise en forme automatique au format A4
-  </title>
-  <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" media="screen" />
-  <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura-dark.css" media="screen and (prefers-color-scheme: dark)" />
-  <style>pre > code {white-space: pre-line;}a{color:darkorchid!important}</style>
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<title>A4</title>
+	<meta name="description"
+		content="Un outil libre et gratuit, qui permet de mettre en forme automatiquement un texte en un format A4, prêt pour l'impression" />
+	<meta name="author" content="Cédric Eyssette" />
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel="stylesheet" href="css/styles.min.css" />
+	<!-- <link rel="icon" href="favicon.svg"> -->
 </head>
+
 <body>
-<h1 id="mise-en-forme-automatique-au-format-a4">Mise en forme automatique au format A4</h1>
-<p>Ce site (sur <a href="https://forge.apps.education.fr/eyssette/a4">Gitlab</a> ou sur <a href="https://github.com/eyssette/a4">Github</a>) vous propose un outil pour créer automatiquement à partir d’un fichier en markdown une page HTML à imprimer en A4, avec :</p>
-<ol type="1">
-<li>Un calcul automatique de la taille de police optimale pour que le contenu du document tienne sur le nombre de pages choisi, sans dépassement.</li>
-<li>La possibilité de choisir le nombre de pages, le nombre de colonnes, une impression en format paysage ou portrait</li>
-<li>La possibilité de répéter plusieurs fois le même contenu sur les différentes pages ou colonnes</li>
-<li>Un respect automatique des règles typographiques françaises sur les espaces insécables</li>
-</ol>
-<h2 id="quelques-exemples">Quelques exemples</h2>
-<ul>
-<li>Impression sur une page : <a href="https://eyssette.forge.apps.education.fr/a4/test-1page">rendu</a>, <a href="https://forge.apps.education.fr/eyssette/a4/-/blob/main/test-1page.md?plain=1">source</a></li>
-<li>Impression sur 3 colonnes, avec répétition du même contenu : <a href="https://eyssette.forge.apps.education.fr/a4/test-3colonnes-copies">rendu</a>,
-<a href="https://forge.apps.education.fr/eyssette/a4/-/blob/main/test-3colonnes-copies.md?plain=1">source</a></li>
-<li>Impression sur 2 pages et 3 colonnes : <a href="https://eyssette.forge.apps.education.fr/a4/test-2pages">rendu</a>, <a href="https://forge.apps.education.fr/eyssette/a4/-/blob/main/test-2pages.md?plain=1">source</a></li>
-</ul>
-<h2 id="configuration-de-limpression">Configuration de l’impression</h2>
-<p>Pour configurer l’impression, il faut ajouter un en-tête au début de votre document markdown. Plusieurs paramètres sont disponibles.</p>
-<p>Voici un exemple avec tous ces paramètres (on n'est pas obligé de tous les utiliser) :</p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pages</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colonnes</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">espacementColonnes</span><span class="kw">:</span><span class="at"> 20px</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mx</span><span class="kw">:</span><span class="at"> 20px</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">my</span><span class="kw">:</span><span class="at"> 20px</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">paysage</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">copies</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">maths</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
-<ul>
-<li><code>pages</code> et <code>colonnes</code> indiquent respectivement le nombre de pages et de colonnes</li>
-<li>on peut définir l’espacement en pixels entre les colonnes : <code>espacementColonnes: 30px</code></li>
-<li><code>mx</code> et <code>my</code> définissent les marges à gauche et à droite (pour <code>mx</code>), en haut et en bas (pour <code>my</code>)</li>
-<li>pour une impression en format paysage, on met <code>paysage: true</code></li>
-<li>pour recopier plusieurs fois le contenu du document (par exemple pour mettre deux fois le même contenu sur une page A4 pour ensuite découper sa page et distribuer du A5), il faut indiquer le nombre de copies ainsi : <code>copies: 2</code> pour deux copies.</li>
-<li><code>maths: true</code> permet d’écrire des formules mathématiques avec la syntaxe <code>$FORMULE$</code> ou <code>$$FORMULE$$</code>. Si la formule est trop longue, la mise en page risque cependant d’être perturbée et il faudra la retoucher manuellement.</li>
-</ul>
-<h2 id="trois-usages-possibles">Trois usages possibles</h2>
-<h3 id="conversion-en-ligne">1/ Conversion en ligne</h3>
-<p>Copiez-coller votre markdown dans cet outil de conversion en ligne et cliquez sur le bouton “Convertir”:</p>
-<p><a href="https://eyssette.forge.apps.education.fr/a4/convert.html" class="uri">https://eyssette.forge.apps.education.fr/a4/convert.html</a></p>
-<h3 id="sur-une-forge">2/ Sur une forge</h3>
-<p>Clonez ce dossier (sur <a href="https://forge.apps.education.fr/eyssette/a4">Gitlab</a> ou sur <a href="https://github.com/eyssette/a4">Github</a>) et créez des fichiers markdown dans votre dossier cloné. Ils seront automatiquement convertis et accessibles en ligne.</p>
-<p>Sur Github, il faudra donner la permission : <code>Read and Write</code> dans : <code>Settings/Actions/General/Workflow permissions</code></p>
-<h3 id="en-local">3/ En local</h3>
-<p>Récupérez ce dossier (sur <a href="https://forge.apps.education.fr/eyssette/a4">Gitlab</a> ou sur <a href="https://github.com/eyssette/a4">Github</a>) en local et ouvrez-le avec VSCode. Une tâche pour VSCode est définie dans le dossier .vscode afin d’automatiser la conversion du fichier markdown sur lequel vous travaillez.</p>
-<p>Vous pouvez aussi utiliser le template pandoc, le filtre fr-nbsp.lua et le fichier CSS utilisé par défaut.</p>
-<h2 id="syntaxe-markdown-autorisée">Syntaxe markdown autorisée</h2>
-<p>Hormis la syntaxe ordinaire, on peut aussi utiliser des codes emojis (p.ex. <code>:smile:</code>), le surlignement (<code>==texte surligné==</code>) et les blocs admonitions :</p>
-<pre><code>::: warning
-Attention, bloc spécial de texte
-:::</code></pre>
-<p>On peut aussi utiliser des balises HTML et notamment la balise
-<code>&lt;style&gt;&lt;/style&gt;</code> à l’intérieur de son document afin de modifier la feuille de style CSS.</p>
-<p>On peut insérer des images avec la syntaxe Markdown habituelle :
-<code>![](URL)</code> mais le redimensionnement des images ne se fera pas automatiquement. On peut cependant utiliser la balise
-<code>&lt;style&gt;</code> afin de faire des modifications en CSS pour imposer une taille maximum de l’image (par exemple :
-<code>&lt;style&gt;img {max-height:100px}&lt;/style&gt;</code>).</p>
-<h2 id="crédits">Crédits</h2>
-<p>Cet outil est distribué gratuitement et sous licence libre.</p>
-<p>Il dépend des outils libres suivants : <a href="https://pandoc.org/">pandoc</a> et <a href="https://github.com/InseeFrLab/pandoc-filter-fr-nbsp">fr-nbsp</a> pour les versions sur forge ou en local, et <a href="https://github.com/markdown-it/markdown-it">Markdown-it</a>, <a href="https://github.com/markdown-it/markdown-it-emoji">Markdown-it-Emoji</a>, <a href="https://github.com/docarys/markdown-it-admonition">Markdown-it-Admonition</a> et <a href="https://github.com/nodeca/js-yaml">js-yaml</a> pour la version en ligne.</p>
+	<h1>Mise en forme automatique au format A4</h1>
+	<p>Copier-coller votre markdown ici et cliquer sur le bouton “Convertir”</p>
+	<textarea id="input">---
+pages: 1
+colonnes: 3
+espacementColonnes: 30px
+copies: 3
+paysage: true
+mx: 10px
+my: 10px
+maths: false
+---
+
+<!-- Vous pouvez modifier comme vous le souhaitez les paramètres ci-dessus et copier-coller ensuite ci-dessous votre markdown. -->
+
+
+</textarea>
+	<button onclick="convert()">Convertir</button>
+	<footer>Outil libre et gratuit, créé par <a href="http://eyssette.forge.apps.education.fr/">Cédric Eyssette</a>
+	</footer>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/markdown-it@13.0.1/dist/markdown-it.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/markdown-it-emoji@2.0.2/dist/markdown-it-emoji.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/markdown-it-mark@3.0.1/dist/markdown-it-mark.min.js"></script>
 </body>
+
 </html>
