@@ -21,7 +21,7 @@ body {
 	margin: auto;
 	padding: 1em;
 	background: white;
-	max-width: 1000px;
+	max-width: 52rem;
 	border-radius: 15px;
 	font-size: 1.03rem;
 }
@@ -39,8 +39,7 @@ h1 + p {
 	max-width: 500px;
 }
 textarea {
-	width: 95%;
-	max-width:95%;
+	width:50rem;
 	display: block;
 	margin: auto;
 	margin-top: 30px;
