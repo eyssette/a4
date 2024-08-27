@@ -5,21 +5,21 @@
 		<title>{{title}}</title>
 		<meta name="description" content="Document au format A4 créé avec A4" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<style>{{templateCSS}}
+		<style>{{{templateCSS}}}
 		{{#if margesX}}
-			body{ padding-left:{{margesX}}; padding-right:{{margesX}};}@media print{@page{padding-left:{{margesX}}!important; padding-right:{{margesX}}!important}}
+			body{ padding-left:{{{margesX}}}; padding-right:{{{margesX}}};}@media print{@page{padding-left:{{{margesX}}}!important; padding-right:{{{margesX}}}!important}}
 		{{/if}}
 		{{#if margesY}}
-		body{ padding-top:{{margesY}}; padding-bottom:{{margesY}};}@media print{@page{padding-top:{{margesY}}; padding-bottom:{{margesY}};}}
+		body{ padding-top:{{{margesY}}}; padding-bottom:{{{margesY}}};}@media print{@page{padding-top:{{{margesY}}}; padding-bottom:{{{margesY}}};}}
 		{{/if}}
 		{{#if columns}}
-		body{ columns:{{columns}};}
+		body{ columns:{{{columns}}};}
 		{{/if}}
 		{{#if spaceBetweenColumns}}
-		body{ column-gap:{{spaceBetweenColumns}};}
+		body{ column-gap:{{{spaceBetweenColumns}}};}
 		{{/if}}
 		{{#if landscape}}
-		body{ width:29.7cm!important}@media print{@page{size:A4 landscape!important;}}
+			body{ width:29.7cm!important;}@media print{@page{size:A4 landscape!important;} }
 		{{/if}}
 		</style>
 		{{#if maths}}
@@ -28,18 +28,26 @@
 				type="text/javascript"
 			></script>
 		{{/if}}
-		<script>
+	</head>
+
+	<body>
+		{{{htmlContent}}}
+	</body>
+	
+	<script>
+			const screenResolution = window.devicePixelRatio;
+			const a4WidthInpixels = 793;
+			const a4HeightInpixels = 1122;
 			{{#if pages}}
-				let nPages =
-				{{pages}};
+				let nPages = {{{pages}}};
 			{{else}}
 				let nPages = 1;
 			{{/if}}
 			let fontSize = 100;
 			{{#if landscape}}
-				let maxHeight = 793*nPages;
+				let maxHeight = a4WidthInpixels*nPages;
 			{{else}}
-				let maxHeight = 1122*nPages;
+				let maxHeight = a4HeightInpixels*nPages;
 			{{/if}}
 			let stepReduceFontSize = maxHeight * 2.5;
 			let ratio;
@@ -51,8 +59,12 @@
 				function update(timestamp) {
 					if (!start) start = timestamp;
 					let newContentHeight = document.body.offsetHeight;
-					if (newContentHeight > maxHeight) {
-						ratio = newContentHeight /stepReduceFontSize;
+					if(newContentHeight<=document.body.clientHeight) {
+						document.body.style.height="fit-content"
+						newContentHeight = document.body.offsetHeight;
+					}
+					if (newContentHeight > maxHeight) { 
+						ratio = newContentHeight / stepReduceFontSize;
 						newFontSize -= ratio;
 						{{#if mathsOrIsFirefox}}
 						document.body.style.fontSize = newFontSize + "px";
@@ -73,21 +85,15 @@
 						if (trackReduction == fontSize) {
 							window.removeEventListener("load",adjustFontSize);
 							window.removeEventListener("resize", adjustFontSize);
-							cancelAnimationFrame(animation); window.print();
+							cancelAnimationFrame(animation);
+							window.print();
 						}
 					}
 				}
-			animation = requestAnimationFrame(update);
+				animation = requestAnimationFrame(update);
 			}
 			window.addEventListener("load", adjustFontSize);
 			window.addEventListener("resize", adjustFontSize);
 		</script>
-		
-	</head>
-
-	<body>
-		{{{htmlContent}}}
-	</body>
-	
 
 </html>
