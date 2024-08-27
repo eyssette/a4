@@ -18,7 +18,6 @@ export function getDataAndCreateDocument(srcTemplateA4) {
 	const mdWithoutYaml = inputValue.replace(yamlRegex, "");
 	let htmlContent = markdownToHTML(mdWithoutYaml);
 	htmlContent = typographyNonBreakingSpaces(htmlContent);
-	console.log(yaml);
 	if (yaml.maths) {
 		htmlContent = convertLatexExpressions(htmlContent);
 	}
