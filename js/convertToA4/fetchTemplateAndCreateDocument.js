@@ -7,7 +7,7 @@ export function fetchTemplateAndCreateDocument(srcTemplate, configTemplate) {
 		.then((data) => {
 			const compileTemplate = Handlebars.compile(data);
 			const a4html = compileTemplate(configTemplate);
-			const result = window.open();
+			const result = window.open("", "_blank");
 			result.document.write(a4html);
 			result.document.close();
 		})
