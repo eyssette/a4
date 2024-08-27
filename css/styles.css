@@ -39,11 +39,11 @@ h1 + p {
 	max-width: 500px;
 }
 textarea {
-	width:50rem;
+	width: 50rem;
 	display: block;
 	margin: auto;
 	margin-top: 30px;
-	padding:10px;
+	padding: 10px;
 	height: 60vh;
 	font-family: monospace;
 	font-size: 0.95em;

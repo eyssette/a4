@@ -1,6 +1,18 @@
 {
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
+	},
+	"[css]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.formatOnSave": true
 	}
+	// "emmet.includeLanguages": {
+	// 	"ejs": "html",
+	// 	"eta": "html"
+	// },
+	// "[html]": {
+	// 	"editor.defaultFormatter": "besthyhy.ejs-eta-beautify",
+	// 	"editor.formatOnSave": true
+	// }
 }

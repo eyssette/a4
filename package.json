@@ -5,6 +5,7 @@
   "main": "script.min.js",
   "devDependencies": {
     "@eslint/js": "^9.8.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
     "cssnano": "^7.0.4",
     "eslint": "^9.8.0",
@@ -34,5 +35,8 @@
   "bugs": {
     "url": "https://github.com/eyssette/a4/issues"
   },
-  "homepage": "https://github.com/eyssette/a4#readme"
+  "homepage": "https://github.com/eyssette/a4#readme",
+  "dependencies": {
+    "mustache": "^4.2.0"
+  }
 }

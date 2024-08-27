@@ -1,9 +1,26 @@
+* {
+	overflow-wrap: break-word;
+	overflow: visible;
+	box-sizing: border-box !important;
+}
 body {
-	font-family: Garamond, Philosopher, "Times New Roman", Times, serif!important;
+	font-family: Garamond, Philosopher, "Times New Roman", Times, serif !important;
 	text-align: justify;
 	line-height: 1.15;
 	column-gap: 25px;
 	orphans: 5;
+	font-size: 100px;
+	width: 21cm;
+	margin: auto;
+	padding: 0.5cm;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+	break-after: avoid;
 }
 
 h1 {
@@ -16,7 +33,6 @@ h2 {
 	font-size: 1.05em;
 	margin-top: 1em !important;
 	margin-bottom: 0.5em !important;
-	break-after: avoid;
 }
 
 body > h2:first-child,
@@ -33,8 +49,7 @@ h6 {
 	font-size: 1em;
 	margin-top: 0.75em;
 	margin-bottom: 0.5em;
-	break-after: avoid;
-	font-weight: normal;
+	font-weight: 400;
 }
 
 h3 {
@@ -42,15 +57,15 @@ h3 {
 }
 
 code {
-	color: black !important;
+	color: #000 !important;
 	font-size: 100%;
 	font-variant: small-caps;
 	font-family: inherit;
-	background: none !important;
+	background: 0 0 !important;
 }
 
-ul,
-ol {
+ol,
+ul {
 	padding-left: 1em;
 }
 
@@ -58,14 +73,17 @@ p {
 	margin-top: 0.5em;
 }
 
-div.admonition {
-	padding: 0.1em 0.2em;
-}
-.admonition-title:not(:empty) {
-	margin-top: 0em !important;
-}
-.admonition-title:empty + p {
-	margin-top: -0.5em;
+@media print {
+	@page {
+		size: A4;
+		padding: 0 !important;
+		margin: 0 !important;
+		/* margin: auto; */
+	}
+
+	body {
+		margin: auto;
+	}
 }
 
 div.danger,
@@ -88,17 +106,29 @@ div.success {
 	border-color: #d6e9c6;
 }
 
+div.admonition {
+	padding: 0.1em 0.2em;
+}
+
+.admonition-title:not(:empty) {
+	margin-top: 0em !important;
+}
+
+.admonition-title:empty + p {
+	margin-top: -0.5em;
+}
+
 mark {
 	background-color: #f9e387;
 }
 
 blockquote {
 	font-family: "ETBembo", "et-book", "Minion Pro", Garamond, Philosopher,
-		"Times New Roman", Times, serif!important;
+		"Times New Roman", Times, serif !important;
 }
 
 br {
-	display: block!important;
-    margin-top: 0.25em!important;
-    content: ""!important;
+	display: block !important;
+	margin-top: 0.25em !important;
+	content: "" !important;
 }
