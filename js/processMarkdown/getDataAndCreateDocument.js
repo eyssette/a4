@@ -25,7 +25,7 @@ export function getDataAndCreateDocument(srcTemplateA4) {
 		htmlContent = htmlContent.repeat(yaml.copies);
 	}
 	const mathsOrIsFirefox = yaml.maths || isFirefox;
-	const configTemplate = {
+	let configTemplate = {
 		templateCSS: templateCSS,
 		title: "",
 		pages: yaml.pages,
@@ -39,5 +39,10 @@ export function getDataAndCreateDocument(srcTemplateA4) {
 		columns: yaml.colonnes,
 		spaceBetweenColumns: yaml.espacementColonnes,
 	};
+	if (yaml.pages) {
+		const heightPages = yaml.paysage ? 21 : 29.7;
+		configTemplate.heightPages = heightPages * yaml.pages + "cm";
+		configTemplate.adjustFontSizeHeightPages = isFirefox ? "1em" : "0.99em";
+	}
 	fetchTemplateAndCreateDocument(srcTemplateA4, configTemplate);
 }
