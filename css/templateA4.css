@@ -125,6 +125,7 @@ mark {
 blockquote {
 	font-family: "ETBembo", "et-book", "Minion Pro", Garamond, Philosopher,
 		"Times New Roman", Times, serif !important;
+	margin: 0 !important;
 }
 
 br {
