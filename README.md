@@ -73,4 +73,4 @@ On peut aussi utiliser A4 en local ou sur une forge grâce à [A4-Forge](https:/
 
 **A4** est distribué gratuitement et sous licence libre.
 
-Il dépend des outils libres suivants : [Markdown-it](https://github.com/markdown-it/markdown-it), [Markdown-it-Emoji](https://github.com/markdown-it/markdown-it-emoji), [Markdown-it-Admonition](https://github.com/docarys/markdown-it-admonition)  et [js-yaml](https://github.com/nodeca/js-yaml).
+A4 est construit à partir des outils libres suivants : [js-yaml](https://github.com/nodeca/js-yaml), [codejar](https://github.com/antonmedv/codejar), [handlebars](https://handlebarsjs.com/) et [showdown](https://github.com/showdownjs/showdown)
