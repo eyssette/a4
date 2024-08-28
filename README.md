@@ -26,8 +26,8 @@ Voici un exemple avec tous ces paramètres (on n'est pas obligé de tous les uti
 pages: 1
 colonnes: 2
 espacementColonnes: 20px
-mx: 20px
-my: 20px
+margesX: 20px
+margesY: 20px
 paysage: true
 copies: 2
 maths: true

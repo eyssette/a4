@@ -9,10 +9,10 @@ export function processYAML(markdownContent) {
 		) {
 			yaml = loadYAML(markdownContent.split("---")[1]);
 			if (yaml.mx) {
-				yaml.margesX == yaml.mx;
+				yaml.margesX = yaml.mx;
 			}
 			if (yaml.my) {
-				yaml.margesY == yaml.my;
+				yaml.margesY = yaml.my;
 			}
 			return yaml;
 		}

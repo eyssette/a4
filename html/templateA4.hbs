@@ -22,7 +22,7 @@
 			body{ width:29.7cm!important;}@media print{@page{size:A4 landscape!important;} }
 		{{/if}}
 		{{#if heightPages}}
-			@media print{body{ height: {{{heightPages}}} ;} body * {font-size:{{{adjustFontSizeHeightPages}}};} }
+			@media print{body{ height: {{{heightPages}}} ;} body * {font-size:{{{adjustFontSizeHeightPages}}};} body h1{font-size:1.2em!important;} body h2{font-size: 1.05em!important;} }
 		{{/if}}
 		</style>
 		{{#if maths}}
