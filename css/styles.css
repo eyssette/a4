@@ -38,7 +38,7 @@ h1 + p {
 	text-align: center;
 	max-width: 500px;
 }
-textarea {
+#editor {
 	width: 50rem;
 	display: block;
 	margin: auto;
@@ -78,4 +78,61 @@ footer {
 }
 a {
 	color: inherit;
+}
+
+.markdownTitles {
+	font-size: 1.1em;
+}
+
+.markdownTitles.h1 {
+	color: darkred;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+.markdownTitles.h2 {
+	color: darkblue;
+	font-weight: bold;
+}
+
+.markdownTitles.h3 {
+	font-weight: bold;
+	font-size: 1em;
+}
+
+.markdownTitles.h4 {
+	color: rgb(72, 0, 140);
+	font-size: 0.9em;
+}
+
+.markdownBold {
+	font-weight: bold;
+}
+.markdownItalic {
+	font-style: italic;
+}
+.markdownLists {
+	color: darkblue;
+	font-weight: bold;
+}
+.markdownLinksURL {
+	color: blue;
+}
+
+.markdownHTMLtag {
+	color: #a201a7;
+}
+.markdownHTMLtag,
+.markdownHTMLtagContent {
+	font-weight: normal;
+}
+
+.markdownHTMLcomment {
+	color: #666;
+}
+
+.markdownSeparator {
+	color: darkred;
+}
+.markdownYAML {
+	color: darkgreen;
 }

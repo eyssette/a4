@@ -7,7 +7,7 @@ import templateCSS from "../../css/templateA4.min.css";
 
 export function getDataAndCreateDocument(srcTemplateA4) {
 	const isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
-	const inputValue = document.getElementById("input").value;
+	const inputValue = document.getElementById("editor").textContent;
 	const yamlRegex = /^---\n([\s\S]*?)\n---\n/;
 	const match = inputValue.match(yamlRegex);
 	const yamlMatch = match ? match[1] : null;
