@@ -44,10 +44,10 @@ maths: true
 
 ## Syntaxe markdown autorisée
 
-Hormis la syntaxe ordinaire, on peut aussi utiliser des codes emojis (p.ex. `:smile:`), le surlignement (`==texte surligné==`) et les blocs admonitions :
+Hormis la syntaxe ordinaire, on peut aussi utiliser des codes emojis (p.ex. `:smile:`), le surlignement (`==texte surligné==`) et les blocs admonitions (_info_, _warning_ et _success_) :
 
 ```
-::: warning
+:::info
 Attention, bloc spécial de texte
 :::
 ```
@@ -55,6 +55,15 @@ Attention, bloc spécial de texte
 On peut aussi utiliser des balises HTML et notamment la balise `<style></style>` à l'intérieur de son document afin de modifier la feuille de style CSS.
 
 On peut insérer des images avec la syntaxe Markdown habituelle : `![](URL)` mais le redimensionnement des images ne se fera pas automatiquement. On peut cependant préciser les dimensions de l'image ainsi : `![](URL =largeur*hauteur)`, ou utiliser la balise `<style>` afin de faire des modifications en CSS pour imposer une taille maximum de l'image (par exemple : `<style>img {max-height:100px}</style>`).
+
+On peut enfin attribuer à un bloc de texte une classe CSS qu'on définira dans une balise style ainsi : 
+
+```
+<style>.maClasse{color:red}</style>
+
+Ça fonctionne ! {.maClasse}
+```
+
 
 ## Autres usages possibles
 
