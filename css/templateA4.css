@@ -72,19 +72,6 @@ p {
 	margin-top: 0.5em;
 }
 
-@media print {
-	@page {
-		size: A4;
-		padding: 0 !important;
-		margin: 0 !important;
-		/* margin: auto; */
-	}
-
-	body {
-		margin: auto;
-	}
-}
-
 div.danger,
 div.warning {
 	color: #b94a48;
@@ -131,4 +118,17 @@ br {
 	display: block !important;
 	margin-top: 0.25em !important;
 	content: "" !important;
+}
+
+@media print {
+	@page {
+		size: A4;
+		padding: 0 !important;
+		margin: 0 !important;
+		/* margin: auto; */
+	}
+
+	body {
+		margin: auto;
+	}
 }
