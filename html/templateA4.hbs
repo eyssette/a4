@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="fr">
 	<head>
 		<meta charset="utf-8" />
@@ -10,10 +11,10 @@
 			body{ padding-left:{{{margesX}}}; padding-right:{{{margesX}}};}@media print{@page{padding-left:{{{margesX}}}!important; padding-right:{{{margesX}}}!important}}
 		{{/if}}
 		{{#if margesY}}
-		body{ padding-top:{{{margesY}}}; padding-bottom:{{{margesY}}};}@media print{@page{padding-top:{{{margesY}}}; padding-bottom:{{{margesY}}};}}
+		body{ padding-top:calc({{{margesY}}} + 10px); padding-bottom:{{{margesY}}};}@media print{@page{padding-top:calc({{{margesY}}} + 10px); padding-bottom:{{{margesY}}};}}
 		{{/if}}
 		{{#if columns}}
-		body{ columns:{{{columns}}};}
+		body{ column-count:{{{columns}}};}
 		{{/if}}
 		{{#if spaceBetweenColumns}}
 		body{ column-gap:{{{spaceBetweenColumns}}};}
@@ -35,8 +36,6 @@
 
 	<body>
 		{{{htmlContent}}}
-	</body>
-	
 	<script>
 			const screenResolution = window.devicePixelRatio;
 			const a4WidthInpixels = 793;
@@ -98,5 +97,5 @@
 			window.addEventListener("load", adjustFontSize);
 			window.addEventListener("resize", adjustFontSize);
 		</script>
-
+	</body>
 </html>
