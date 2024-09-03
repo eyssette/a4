@@ -17,6 +17,7 @@ export function getDataAndCreateDocument(srcTemplateA4) {
 	}
 	const mdWithoutYaml = inputValue.replace(yamlRegex, "");
 	let htmlContent = markdownToHTML(mdWithoutYaml);
+	htmlContent = htmlContent.replaceAll(" !important", "!important");
 	htmlContent = typographyNonBreakingSpaces(htmlContent);
 	if (yaml.maths) {
 		htmlContent = convertLatexExpressions(htmlContent);
