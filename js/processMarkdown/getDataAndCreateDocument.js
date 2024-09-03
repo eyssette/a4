@@ -26,6 +26,7 @@ export function getDataAndCreateDocument(srcTemplateA4) {
 		htmlContent = htmlContent.repeat(yaml.copies);
 	}
 	const mathsOrIsFirefox = yaml.maths || isFirefox;
+	const externalCSS = yaml.css || "";
 	let configTemplate = {
 		templateCSS: templateCSS,
 		title: "",
@@ -39,6 +40,7 @@ export function getDataAndCreateDocument(srcTemplateA4) {
 		margesY: yaml.margesY,
 		columns: yaml.colonnes,
 		spaceBetweenColumns: yaml.espacementColonnes,
+		css: externalCSS,
 	};
 	if (yaml.pages) {
 		const heightPages = yaml.paysage ? 21 : 29.7;

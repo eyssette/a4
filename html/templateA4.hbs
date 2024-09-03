@@ -26,6 +26,9 @@
 			@media print{body{ height: {{{heightPages}}} ;} body * {font-size:{{{adjustFontSizeHeightPages}}};} body h1{font-size:1.2em!important;} body h2{font-size: 1.05em!important;} }
 		{{/if}}
 		</style>
+		{{#if css}}
+			<link href="{{{css}}}" rel="stylesheet" type="text/css" />
+		{{/if}}
 		{{#if maths}}
 			<script
 				src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
