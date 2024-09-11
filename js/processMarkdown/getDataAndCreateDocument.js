@@ -29,7 +29,7 @@ export function getDataAndCreateDocument(srcTemplateA4) {
 	const externalCSS = yaml.css || "";
 	let configTemplate = {
 		templateCSS: templateCSS,
-		title: "",
+		title: yaml.titre || "",
 		pages: yaml.pages,
 		landscape: yaml.paysage,
 		maths: yaml.maths,
