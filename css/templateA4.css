@@ -1,4 +1,5 @@
 * {
+	overflow: auto;
 	overflow-wrap: break-word;
 	box-sizing: border-box !important;
 }
