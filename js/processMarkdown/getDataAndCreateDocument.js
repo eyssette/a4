@@ -27,7 +27,6 @@ export function getDataAndCreateDocument(srcTemplateA4) {
 	}
 	const mathsOrIsFirefox = yaml.maths || isFirefox;
 	const externalCSS = yaml.css || "";
-	const overflow = yaml.colonnes && yaml.colonnes > 1 ? true : false;
 	let configTemplate = {
 		templateCSS: templateCSS,
 		title: yaml.titre || "",
@@ -41,7 +40,6 @@ export function getDataAndCreateDocument(srcTemplateA4) {
 		margesY: yaml.margesY,
 		columns: yaml.colonnes,
 		spaceBetweenColumns: yaml.espacementColonnes,
-		overflow: overflow,
 		css: externalCSS,
 	};
 	if (yaml.pages) {
