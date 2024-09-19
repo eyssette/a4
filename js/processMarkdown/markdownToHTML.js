@@ -44,7 +44,7 @@ function showdownExtensionAdmonitions() {
 		{
 			type: "output",
 			filter: (text) => {
-				text = text.replaceAll("<p>:::", ":::");
+				text = text.replaceAll(/<p>:::(.*?)<\/p>/g, ":::$1");
 				const regex = /:::(.*?)\n(.*?):::/gs;
 				const matches = text.match(regex);
 				if (matches) {
@@ -59,15 +59,19 @@ function showdownExtensionAdmonitions() {
 								? true
 								: false;
 						if (!isInCode) {
-							const type = matchInformations[1];
+							let type = matchInformations[1];
 							let title = matchInformations[2];
+							if (type.includes("<br")) {
+								type = type.replace("<br", "");
+								title = "";
+							}
 							const content = matchInformations[3];
 							let matchReplaced;
 							if (title.includes("collapsible")) {
 								title = title.replace("collapsible", "");
-								matchReplaced = `<div class="admonition ${type}"><details><summary class="admonitionTitle">${title}</summary><div class="admonitionContent">${content}</div></details></div>`;
+								matchReplaced = `<div><div class="admonition ${type}"><details><summary class="admonitionTitle">${title}</summary><div class="admonitionContent">${content}</div></details></div></div>`;
 							} else {
-								matchReplaced = `<div class="admonition ${type}"><div class="admonitionTitle">${title}</div><div class="admonitionContent">${content}</div></div>`;
+								matchReplaced = `<div><div class="admonition ${type}"><div class="admonitionTitle">${title}</div><div class="admonitionContent">${content}</div></div></div>`;
 							}
 							modifiedText = modifiedText.replaceAll(match, matchReplaced);
 						}
