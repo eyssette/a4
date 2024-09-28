@@ -76,3 +76,7 @@ On peut aussi utiliser A4 en local ou sur une forge grâce à [A4-Forge](https:/
 **A4** est distribué gratuitement et sous licence libre.
 
 A4 est construit à partir des outils libres suivants : [js-yaml](https://github.com/nodeca/js-yaml), [codejar](https://github.com/antonmedv/codejar), [handlebars](https://handlebarsjs.com/) et [showdown](https://github.com/showdownjs/showdown)
+
+## Autres logiciels à tester
+
+N'hésitez pas également à tester [pdfautonup et pdfimpose](https://ababsurdo.fr/blog/20240325-imposition-pour-les-profs/), des logiciels libres créés par [Louis Paternault](https://ababsurdo.fr/apropos/)
