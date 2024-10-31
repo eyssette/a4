@@ -79,6 +79,10 @@ p {
 	margin-top: 0.5em;
 }
 
+img {
+	max-width: 100%;
+}
+
 div.danger,
 div.warning {
 	color: #b94a48;
