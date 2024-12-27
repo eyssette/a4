@@ -2,10 +2,10 @@ import { convertLatexExpressions } from "./convertLatex";
 import { markdownToHTML } from "./markdownToHTML";
 import { typographyNonBreakingSpaces } from "./typography";
 import { processYAML } from "./yaml";
-import { fetchTemplateAndCreateDocument } from "../convertToA4/fetchTemplateAndCreateDocument";
+import { getTemplateAndCreateDocument } from "../convertToA4/getTemplateAndCreateDocument";
 import templateCSS from "../../css/templateA4.min.css";
 
-export function getDataAndCreateDocument(srcTemplateA4) {
+export function getDataAndCreateDocument(templateA4) {
 	const isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
 	const inputValue = document.getElementById("editor").textContent;
 	const yamlRegex = /^---\n([\s\S]*?)\n---\n/;
@@ -47,5 +47,5 @@ export function getDataAndCreateDocument(srcTemplateA4) {
 		configTemplate.heightPages = heightPages * yaml.pages + "cm";
 		configTemplate.adjustFontSizeHeightPages = isFirefox ? "1em" : "0.99em";
 	}
-	fetchTemplateAndCreateDocument(srcTemplateA4, configTemplate);
+	getTemplateAndCreateDocument(templateA4, configTemplate);
 }

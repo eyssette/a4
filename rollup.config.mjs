@@ -15,7 +15,7 @@ export default {
 	plugins: [
 		//nodeResolve(),
 		string({
-			include: ["**/*.min.css", "**/*.md"],
+			include: ["**/*.min.css", "**/*.md", "**/*.hbs"],
 		}),
 		postcss({
 			extensions: [".css"],
