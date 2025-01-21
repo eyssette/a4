@@ -131,6 +131,37 @@ br {
 	content: "" !important;
 }
 
+table {
+	font-family: sans-serif;
+	border-collapse: collapse;
+	border: 2px solid rgb(200, 200, 200);
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+td,
+th {
+	border: 1px solid rgb(190, 190, 190);
+	padding: 10px 10px;
+	text-align: center;
+}
+
+th {
+	background-color: rgb(235, 235, 235);
+}
+
+tr:nth-child(even) td {
+	background-color: rgb(250, 250, 250);
+}
+
+tr:nth-child(odd) td {
+	background-color: rgb(245, 245, 245);
+}
+
+caption {
+	padding: 10px;
+}
+
 @media print {
 	@page {
 		size: A4;
