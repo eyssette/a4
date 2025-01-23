@@ -111,36 +111,34 @@ function showdownExtensionHighlight() {
 
 // Gestion des footnotes
 function showdownExtensionFootnotes() {
-	const footnotes = [];
+	const footnotesMap = new Map();
 	return [
 		{
 			type: "lang",
 			regex: /\[\^(\d+)\]:\s*(.+)/g,
 			replace: function (_, id, content) {
-				// Stocker les notes de bas de page avec leur ID et contenu
-				footnotes.push({ id, content });
-				return ""; // Supprimer la définition de la note du texte principal
+				if (!footnotesMap.has(id)) {
+					footnotesMap.set(id, content);
+				}
+				return "";
 			},
 		},
 		{
 			type: "lang",
 			regex: /\[\^(\d+)\]/g,
 			replace: function (_, id) {
-				// Ajouter une ancre pour chaque référence
 				return `<sup id="fnref-${id}"><a href="#fn-${id}" class="footnote-ref">${id}</a></sup>`;
 			},
 		},
 		{
-			type: "output",
+			type: "lang",
 			filter: function (text) {
-				if (footnotes.length === 0) return text; // Pas de notes, retour direct
-
-				// Construire la section des notes de bas de page
-				const notesSection = footnotes
-					.map((note) => {
-						return `<li id="fn-${note.id}">
-							${note.content} <a href="#fnref-${note.id}" class="footnote-backref">↩</a>
-						 </li>`;
+				if (footnotesMap.size === 0) return text;
+				const notesSection = Array.from(footnotesMap.entries())
+					.map(([id, content]) => {
+						return `<li id="fn-${id}">
+					${content} <a href="#fnref-${id}" class="footnote-backref">↩</a>
+				 </li>`;
 					})
 					.join("\n");
 
