@@ -137,6 +137,8 @@ table {
 	border: 2px solid rgb(200, 200, 200);
 	margin-top: 1em;
 	margin-bottom: 1em;
+	width: 100%;
+	table-layout: fixed;
 }
 
 td,
