@@ -56,16 +56,24 @@ ul {
 	margin-bottom: 1em;
 	max-width: 750px;
 }
+#buttons {
+	text-align: center;
+}
 button {
-	margin: 2em auto;
-	display: block;
-	margin-top: 20px;
+	margin: 20px auto 2em 20px;
+	display: inline-block;
 	font-size: 1.1rem;
 	background-color: #0070f3;
 	color: white;
 	border: 0;
 	border-radius: 4px;
 	padding: 6px 12px;
+	cursor: pointer;
+}
+#resetButton {
+	background-color: white;
+	color: #333;
+	border: 1px solid #333;
 }
 footer {
 	font-size: 0.9em;

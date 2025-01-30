@@ -82,4 +82,8 @@ export let editor;
 export function initializeEditor(editorElement) {
 	editor = CodeJar(editorElement, highlightCode, options);
 	editor.updateCode(initialContent);
+	const resetButtonElement = document.querySelector("#resetButton");
+	resetButtonElement.addEventListener("click", function () {
+		editor.updateCode(initialContent);
+	});
 }
