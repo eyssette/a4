@@ -84,6 +84,6 @@ export function initializeEditor(editorElement) {
 	editor.updateCode(initialContent + "\n\n");
 	const resetButtonElement = document.querySelector("#resetButton");
 	resetButtonElement.addEventListener("click", function () {
-		editor.updateCode(initialContent);
+		editor.updateCode(initialContent + "\n\n");
 	});
 }
