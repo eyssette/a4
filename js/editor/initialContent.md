@@ -8,7 +8,4 @@ margesX: 10px
 margesY: 10px
 maths: false
 ---
-
-<!-- Vous pouvez modifier comme vous le souhaitez les paramètres ci-dessus et copier-coller ensuite ci-dessous votre Markdown. -->
-
-
+<!-- Copiez-collez votre contenu en Markdown ci-dessous -->
