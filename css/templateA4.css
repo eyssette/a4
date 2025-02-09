@@ -20,6 +20,7 @@ h4,
 h5,
 h6 {
 	break-after: avoid;
+	break-inside: avoid;
 }
 
 h1 {
@@ -27,6 +28,7 @@ h1 {
 	text-align: center;
 	margin-top: 0;
 	margin-bottom: 1em;
+	break-inside: avoid;
 }
 
 h2 {
