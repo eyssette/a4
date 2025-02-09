@@ -1,4 +1,5 @@
 import "../css/styles.css";
+import "../css/templateA4.css";
 import templateA4 from "../html/templateA4.hbs";
 import { initializeEditor } from "./editor/initializeEditor";
 import { getDataAndCreateDocument } from "./processMarkdown/getDataAndCreateDocument";
