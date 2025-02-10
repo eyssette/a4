@@ -15,7 +15,12 @@ export function getDataAndCreateDocument(templateA4) {
 	if (yamlMatch) {
 		yaml = processYAML(inputValue);
 	}
-	const mdWithoutYaml = inputValue.replace(yamlRegex, "");
+	let mdWithoutYaml = inputValue.replace(yamlRegex, "");
+	// On permet l'interprétation du Markdown à l'intérieur des balises section
+	mdWithoutYaml = mdWithoutYaml.replaceAll(
+		/<section.*?>/g,
+		'<section markdown="1">',
+	);
 	let htmlContent = markdownToHTML(mdWithoutYaml);
 	htmlContent = htmlContent.replaceAll(" !important", "!important");
 	htmlContent = typographyNonBreakingSpaces(htmlContent);

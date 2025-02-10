@@ -31,6 +31,10 @@ h1 {
 	break-inside: avoid;
 }
 
+section {
+	break-inside: avoid;
+}
+
 h2 {
 	font-size: 1.05em;
 	margin-top: 1em !important;
