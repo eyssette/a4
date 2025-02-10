@@ -21,6 +21,10 @@ export function getDataAndCreateDocument(templateA4) {
 		/<section.*?>/g,
 		'<section markdown="1">',
 	);
+	const titleMarkdownMatch = mdWithoutYaml.match(/(\n|$)# (.*)/g);
+	const titleMarkdown = titleMarkdownMatch
+		? titleMarkdownMatch[0].trim().replace("# ", "").replace(" ", "_")
+		: "";
 	let htmlContent = markdownToHTML(mdWithoutYaml);
 	htmlContent = htmlContent.replaceAll(" !important", "!important");
 	htmlContent = typographyNonBreakingSpaces(htmlContent);
@@ -34,7 +38,7 @@ export function getDataAndCreateDocument(templateA4) {
 	const externalCSS = yaml.css || "";
 	let configTemplate = {
 		templateCSS: templateCSS,
-		title: yaml.titre || "",
+		title: yaml.titre || titleMarkdown || "",
 		pages: yaml.pages,
 		landscape: yaml.paysage,
 		maths: yaml.maths,
