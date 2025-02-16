@@ -23,7 +23,7 @@ export function getDataAndCreateDocument(templateA4) {
 	);
 	const titleMarkdownMatch = mdWithoutYaml.match(/(\n|$)# (.*)/g);
 	const titleMarkdown = titleMarkdownMatch
-		? titleMarkdownMatch[0].trim().replace("# ", "").replace(" ", "_")
+		? titleMarkdownMatch[0].trim().replace("# ", "").replaceAll(" ", "_")
 		: "";
 	let htmlContent = markdownToHTML(mdWithoutYaml);
 	htmlContent = htmlContent.replaceAll(" !important", "!important");
