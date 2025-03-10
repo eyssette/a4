@@ -34,21 +34,31 @@ export function getDataAndCreateDocument(templateA4) {
 	if (yaml && yaml.copies) {
 		htmlContent = htmlContent.repeat(yaml.copies);
 	}
-	const mathsOrIsFirefox = yaml.maths || isFirefox;
-	const externalCSS = yaml.css || "";
+	const externalCSS = yaml && yaml.css ? yaml.css : "";
+	const title = yaml && yaml.titre ? yaml.titre : titleMarkdown;
+	const pages = yaml && yaml.pages ? yaml.pages : 1;
+	const isLandscape = yaml ? yaml.paysage : true;
+	const useMaths = yaml && yaml.maths ? yaml.maths : false;
+	const mathsOrIsFirefox = useMaths || isFirefox;
+	const copies = yaml && yaml.copies ? yaml.copies : 1;
+	const marginsX = yaml && yaml.margesX ? yaml.margesX : "10px";
+	const marginsY = yaml && yaml.margesY ? yaml.margesY : "10px";
+	const columns = yaml && yaml.colonnes ? yaml.colonnes : 3;
+	const spaceBetweenColumns =
+		yaml && yaml.espacementColonnes ? yaml.espacementColonnes : "30px";
 	let configTemplate = {
 		templateCSS: templateCSS,
-		title: yaml.titre || titleMarkdown || "",
-		pages: yaml.pages,
-		landscape: yaml.paysage,
-		maths: yaml.maths,
+		title: title,
+		pages: pages,
+		landscape: isLandscape,
+		maths: useMaths,
 		mathsOrIsFirefox: mathsOrIsFirefox,
-		copies: yaml.copies,
+		copies: copies,
 		htmlContent: htmlContent,
-		margesX: yaml.margesX,
-		margesY: yaml.margesY,
-		columns: yaml.colonnes,
-		spaceBetweenColumns: yaml.espacementColonnes,
+		margesX: marginsX,
+		margesY: marginsY,
+		columns: columns,
+		spaceBetweenColumns: spaceBetweenColumns,
 		css: externalCSS,
 	};
 	if (yaml && yaml.pages) {
