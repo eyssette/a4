@@ -28,10 +28,10 @@ export function getDataAndCreateDocument(templateA4) {
 	let htmlContent = markdownToHTML(mdWithoutYaml);
 	htmlContent = htmlContent.replaceAll(" !important", "!important");
 	htmlContent = typographyNonBreakingSpaces(htmlContent);
-	if (yaml.maths) {
+	if (yaml && yaml.maths) {
 		htmlContent = convertLatexExpressions(htmlContent);
 	}
-	if (yaml.copies) {
+	if (yaml && yaml.copies) {
 		htmlContent = htmlContent.repeat(yaml.copies);
 	}
 	const mathsOrIsFirefox = yaml.maths || isFirefox;
@@ -51,7 +51,7 @@ export function getDataAndCreateDocument(templateA4) {
 		spaceBetweenColumns: yaml.espacementColonnes,
 		css: externalCSS,
 	};
-	if (yaml.pages) {
+	if (yaml && yaml.pages) {
 		const heightPages = yaml.paysage ? 21 : 29.7;
 		configTemplate.heightPages = heightPages * yaml.pages + "cm";
 		configTemplate.adjustFontSizeHeightPages = isFirefox ? "1em" : "0.99em";

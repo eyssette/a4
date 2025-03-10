@@ -8,10 +8,10 @@ export function processYAML(markdownContent) {
 			markdownContent.startsWith("---")
 		) {
 			yaml = loadYAML(markdownContent.split("---")[1]);
-			if (yaml.mx) {
+			if (yaml && yaml.mx) {
 				yaml.margesX = yaml.mx;
 			}
-			if (yaml.my) {
+			if (yaml && yaml.my) {
 				yaml.margesY = yaml.my;
 			}
 			return yaml;
