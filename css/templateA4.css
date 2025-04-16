@@ -65,6 +65,10 @@ h3 {
 	text-decoration: underline;
 }
 
+pre {
+	white-space: pre-line;
+}
+
 code {
 	color: #000 !important;
 	font-size: 100%;
