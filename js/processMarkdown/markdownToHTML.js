@@ -153,6 +153,7 @@ function showdownExtensionFootnotes() {
 
 // Gestion de la conversion du markdown en HTML
 const converter = new Showdown.Converter({
+	tasklists: true,
 	emoji: true,
 	parseImgDimensions: true,
 	simplifiedAutoLink: true,
