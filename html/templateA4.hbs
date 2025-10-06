@@ -122,48 +122,12 @@
 
 		function finalize() {
 			document.body.style.fontSize = bestFit + "px";
-			if (nPages > 1) optimizeMultiPageFont();
 			{{#if openInNewWindow}}
 				setTimeout(() => window.print(), 300);
 			{{else}}
 				document.body.style.visibility = "visible";
 			{{/if}}
 		}
-
-		function optimizeMultiPageFont() {
-  const maxIterations = 20;
-  const adjustStep = 0.95; // facteur d’ajustement doux
-  let iteration = 0;
-  let fontSize = parseFloat(getComputedStyle(document.body).fontSize);
-
-  function step() {
-    iteration++;
-
-    // Calcul du nombre réel de pages visibles
-    const currentPages = Math.ceil(document.body.scrollHeight / a4HeightInpixels);
-
-    if (currentPages === nPages || iteration >= maxIterations) {
-      // On a atteint un équilibre
-      document.body.style.fontSize = fontSize + "px";
-      document.body.style.visibility = "visible";
-      return;
-    }
-
-    if (currentPages > nPages) {
-      // Trop de pages -> réduire un peu
-      fontSize *= adjustStep;
-    } else if (currentPages < nPages) {
-      // Pas assez de pages -> augmenter légèrement
-      fontSize /= adjustStep;
-    }
-
-    document.body.style.fontSize = fontSize + "px";
-    document.body.offsetHeight; // force reflow
-    setTimeout(step, 60);
-  }
-
-  step();
-}
 
 		step();
 		}
