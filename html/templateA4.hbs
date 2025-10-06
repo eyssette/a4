@@ -56,11 +56,12 @@
 		{{else}}
 			const nPages = 1;
 		{{/if}}
+		const isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
 		if(nPages>1){
 			const styleElement = document.createElement("style");
-			let adjustCSSinitialContent = `
+			let adjustCSSinitialContent = isFirefox ? `
 				padding-top: calc(${margesY} + 10px);
-				padding-bottom: ${margesY};`;
+				padding-bottom: ${margesY};` : "";
 			styleElement.textContent = "@media print{.initialContent{break-inside:avoid-column;break-before:column;"+adjustCSSinitialContent+"}}";
 			document.head.appendChild(styleElement);
 		}
