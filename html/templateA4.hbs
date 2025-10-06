@@ -41,7 +41,11 @@
 		{{/if}}
 	</head>
 
-	<body>
+	{{#if openInNewWindow}}
+		<body>
+	{{else}}
+		<body style="visibility:hidden;">
+	{{/if}}
 			{{{htmlContent}}}
 
 	<script>
@@ -122,6 +126,8 @@
 			document.body.style.fontSize = bestFit + "px";
 			{{#if openInNewWindow}}
 				setTimeout(() => window.print(), 300);
+			{{else}}
+				document.body.style.visibility = "visible";
 			{{/if}}
 		}
 

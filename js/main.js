@@ -16,6 +16,7 @@ if (hash) {
 			getDataAndCreateDocument(templateA4, md);
 		});
 } else {
+	document.body.style.visibility = "visible";
 	const editorElement = document.getElementById("editor");
 	initializeEditor(editorElement);
 
