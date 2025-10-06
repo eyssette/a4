@@ -47,14 +47,21 @@
 	<script>
 		const a4WidthInpixels = 793;
 		const a4HeightInpixels = 1120;
+		let margesY;
+		{{#if margesY}}
+			margesY = "{{margesY}}";
+		{{/if}}
 		{{#if pages}}
 			const nPages = {{{pages}}};
 		{{else}}
 			const nPages = 1;
 		{{/if}}
 		if(nPages>1){
-			const styleElement = document.createElement("style")
-			styleElement.textContent = "@media print{.initialContent{break-inside:avoid-column;break-before:column}}"
+			const styleElement = document.createElement("style");
+			let adjustCSSinitialContent = `
+				padding-top: calc(${margesY} + 10px);
+				padding-bottom: ${margesY};`;
+			styleElement.textContent = "@media print{.initialContent{break-inside:avoid-column;break-before:column;"+adjustCSSinitialContent+"}}";
 			document.head.appendChild(styleElement);
 		}
 		{{#if landscape}}
