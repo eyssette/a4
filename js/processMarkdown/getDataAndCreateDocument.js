@@ -4,18 +4,20 @@ import { typographyNonBreakingSpaces } from "./typography";
 import { processYAML } from "./yaml";
 import { getTemplateAndCreateDocument } from "../convertToA4/getTemplateAndCreateDocument";
 import templateCSS from "../../css/templateA4.min.css";
+import purify from "../externals/dompurify";
 
-export function getDataAndCreateDocument(templateA4) {
+export function getDataAndCreateDocument(templateA4, md) {
 	const isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
-	const inputValue = document.getElementById("editor").textContent;
+	const openInNewWindow = md ? false : true;
+	md = md ? md : document.getElementById("editor").textContent;
 	const yamlRegex = /^---\n([\s\S]*?)\n---\n/;
-	const match = inputValue.match(yamlRegex);
+	const match = md.match(yamlRegex);
 	const yamlMatch = match ? match[1] : null;
 	let yaml;
 	if (yamlMatch) {
-		yaml = processYAML(inputValue);
+		yaml = processYAML(md);
 	}
-	let mdWithoutYaml = inputValue.replace(yamlRegex, "");
+	let mdWithoutYaml = md.replace(yamlRegex, "");
 	// On permet l'interprétation du Markdown à l'intérieur des balises section
 	mdWithoutYaml = mdWithoutYaml.replaceAll(
 		/<section.*?>/g,
@@ -25,6 +27,8 @@ export function getDataAndCreateDocument(templateA4) {
 	const titleMarkdown = titleMarkdownMatch
 		? titleMarkdownMatch[0].trim().replace("# ", "").replaceAll(" ", "_")
 		: "";
+	// On sanitize la source en Markdown
+	mdWithoutYaml = purify.sanitize(mdWithoutYaml, { ADD_ATTR: ["markdown"] });
 	let htmlContent = markdownToHTML(mdWithoutYaml);
 	htmlContent = htmlContent.replaceAll(" !important", "!important");
 	htmlContent = typographyNonBreakingSpaces(htmlContent);
@@ -64,11 +68,12 @@ export function getDataAndCreateDocument(templateA4) {
 		columns: columns,
 		spaceBetweenColumns: spaceBetweenColumns,
 		css: externalCSS,
+		openInNewWindow: openInNewWindow,
 	};
 	if (yaml && yaml.pages) {
 		const heightPages = yaml.paysage ? 21 : 29.7;
 		configTemplate.heightPages = heightPages * yaml.pages + "cm";
 		configTemplate.adjustFontSizeHeightPages = "1em";
 	}
-	getTemplateAndCreateDocument(templateA4, configTemplate);
+	getTemplateAndCreateDocument(templateA4, configTemplate, openInNewWindow);
 }

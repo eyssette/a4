@@ -120,7 +120,9 @@
 
 		function finalize() {
 			document.body.style.fontSize = bestFit + "px";
-			setTimeout(() => window.print(), 300);
+			{{#if openInNewWindow}}
+				setTimeout(() => window.print(), 300);
+			{{/if}}
 		}
 
 		step();
