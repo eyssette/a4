@@ -32,7 +32,11 @@ export function getDataAndCreateDocument(templateA4) {
 		htmlContent = convertLatexExpressions(htmlContent);
 	}
 	if (yaml && yaml.copies) {
-		htmlContent = htmlContent.repeat(yaml.copies);
+		let repeatedContent = "";
+		for (let i = 0; i < yaml.copies; i++) {
+			repeatedContent += `<div class="initialContent">${htmlContent}</div>`;
+		}
+		htmlContent = repeatedContent;
 	}
 	const externalCSS = yaml && yaml.css ? yaml.css : "";
 	const title = yaml && yaml.titre ? yaml.titre : titleMarkdown;
