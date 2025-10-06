@@ -8,97 +8,119 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<style>{{{templateCSS}}}
 		{{#if margesX}}
-			body{ padding-left:{{{margesX}}}; padding-right:{{{margesX}}};}@media print{@page{padding-left:{{{margesX}}}!important; padding-right:{{{margesX}}}!important}}
+			body { padding-left:{{{margesX}}}; padding-right:{{{margesX}}};}@media print{ @page { padding-left: {{{margesX}}}!important; padding-right: {{{margesX}}}!important; } }
 		{{/if}}
 		{{#if margesY}}
-		body{ padding-top:calc({{{margesY}}} + 10px); padding-bottom:{{{margesY}}};}@media print{@page{padding-top:calc({{{margesY}}} + 10px); padding-bottom:{{{margesY}}};}}
+			body { padding-top: calc({{{margesY}}} + 10px); padding-bottom: {{{margesY}}}; }
+			@media print { @page { padding-top: calc({{{margesY}}} + 10px); padding-bottom: {{{margesY}}}; } }
 		{{/if}}
 		{{#if columns}}
-		body{ column-count:{{{columns}}};}
+			body { column-count: {{{columns}}}; }
 		{{/if}}
 		{{#if spaceBetweenColumns}}
-		body{ column-gap:{{{spaceBetweenColumns}}};}
+			body { column-gap: {{{spaceBetweenColumns}}}; }
 		{{/if}}
 		{{#if landscape}}
-			body{ width:29.7cm!important;}@media print{@page{size:A4 landscape!important;} }
+			body { width: 29.7cm !important; }
+			@media print { @page { size: A4 landscape !important; } }
 		{{/if}}
 		{{#if heightPages}}
-			@media print{body{ height: {{{heightPages}}} ;} body * {font-size:{{{adjustFontSizeHeightPages}}};} body h1{font-size:1.2em!important;} body h2{font-size: 1.05em!important;} }
+			@media print {
+				body { height: {{{heightPages}}}; }
+				body * { font-size: {{{adjustFontSizeHeightPages}}}; }
+				body h1 { font-size: 1.2em !important; }
+				body h2 { font-size: 1.05em !important; }
+			}
 		{{/if}}
 		</style>
 		{{#if css}}
 			<link href="{{{css}}}" rel="stylesheet" type="text/css" />
 		{{/if}}
 		{{#if maths}}
-			<script
-				src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
-				type="text/javascript"
-			></script>
+			<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 		{{/if}}
 	</head>
 
 	<body>
-		{{{htmlContent}}}
+			{{{htmlContent}}}
+
 	<script>
-			const screenResolution = window.devicePixelRatio;
-			const a4WidthInpixels = 793;
-			const a4HeightInpixels = 1122;
-			{{#if pages}}
-				let nPages = {{{pages}}};
-			{{else}}
-				let nPages = 1;
-			{{/if}}
-			let fontSize = 100;
-			{{#if landscape}}
-				let maxHeight = a4WidthInpixels*nPages;
-			{{else}}
-				let maxHeight = a4HeightInpixels*nPages;
-			{{/if}}
-			let stepReduceFontSize = maxHeight * 2.5;
-			let ratio;
-			let trackReduction = 0;
-			let animation;
-			function adjustFontSize() {
-				let newFontSize = fontSize;
-				let start = null;
-				function update(timestamp) {
-					if (!start) start = timestamp;
-					let newContentHeight = document.body.offsetHeight;
-					if(newContentHeight<=document.body.clientHeight) {
-						document.body.style.height="fit-content"
-						newContentHeight = document.body.offsetHeight;
-					}
-					if (newContentHeight > maxHeight) { 
-						ratio = newContentHeight / stepReduceFontSize;
-						newFontSize -= ratio;
-						{{#if mathsOrIsFirefox}}
-						document.body.style.fontSize = newFontSize + "px";
-						{{else}}
-						if (newFontSize > trackReduction) {
-							document.body.style.fontSize = newFontSize + "px";
-						}
-						{{/if}}
-						trackReduction = newFontSize;
-						start = timestamp;
-						animation = requestAnimationFrame(update);
-					}
-					else {
-						if (newFontSize !== fontSize) {
-							fontSize = newFontSize;
-							document.body.style.fontSize = fontSize + "px";
-						}
-						if (trackReduction == fontSize) {
-							window.removeEventListener("load",adjustFontSize);
-							window.removeEventListener("resize", adjustFontSize);
-							cancelAnimationFrame(animation);
-							window.print();
-						}
-					}
-				}
-				animation = requestAnimationFrame(update);
+		const a4WidthInpixels = 793;
+		const a4HeightInpixels = 1120;
+		{{#if pages}}
+			const nPages = {{{pages}}};
+		{{else}}
+			const nPages = 1;
+		{{/if}}
+		{{#if landscape}}
+			const maxHeight = (a4WidthInpixels * nPages) - ((nPages-1)*20);
+		{{else}}
+			const maxHeight = (a4HeightInpixels * nPages) - ((nPages-1)*20);
+		{{/if}}
+
+		function adjustFontSize() {
+		const minFontSize = 6; // px - limite inférieure
+		const maxFontSize = 150; // px - limite supérieure
+		const tolerance = 5; // px de tolérance sur la hauteur
+		const delayBetweenSteps = 30; // ms - pour lisser l’animation
+
+		let low = minFontSize;
+		let high = maxFontSize;
+		let bestFit = minFontSize;
+		let iteration = 0;
+		const maxIterations = 60;
+
+		function testSize(size) {
+			document.body.style.fontSize = size + "px";
+			// Forcer recalcul du layout
+			document.body.offsetHeight;
+			let height = document.body.scrollHeight;
+			return height;
+		}
+
+		function step() {
+			iteration++;
+			const mid = (low + high) / 2;
+			const height = testSize(mid);
+
+			if (Math.abs(height - maxHeight) <= tolerance) {
+				bestFit = mid;
+				finalize();
+				return;
 			}
-			window.addEventListener("load", adjustFontSize);
-			window.addEventListener("resize", adjustFontSize);
-		</script>
+
+			if (height > maxHeight) {
+				// Trop grand → réduire
+				high = mid;
+			} else {
+				// Trop petit → agrandir
+				bestFit = mid;
+				low = mid;
+			}
+
+			if (iteration < maxIterations && high - low > 0.5) {
+				setTimeout(step, delayBetweenSteps);
+			} else {
+				finalize();
+			}
+		}
+
+		function finalize() {
+			document.body.style.fontSize = bestFit + "px";
+			setTimeout(() => window.print(), 300);
+		}
+
+		step();
+		}
+
+		window.addEventListener("load", () => {
+			if (window.MathJax) {
+				MathJax.startup.promise.then(adjustFontSize);
+			} else {
+				adjustFontSize();
+			}
+		});
+		window.addEventListener("resize", adjustFontSize);
+	</script>
 	</body>
 </html>

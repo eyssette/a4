@@ -64,7 +64,7 @@ export function getDataAndCreateDocument(templateA4) {
 	if (yaml && yaml.pages) {
 		const heightPages = yaml.paysage ? 21 : 29.7;
 		configTemplate.heightPages = heightPages * yaml.pages + "cm";
-		configTemplate.adjustFontSizeHeightPages = isFirefox ? "1em" : "0.99em";
+		configTemplate.adjustFontSizeHeightPages = "1em";
 	}
 	getTemplateAndCreateDocument(templateA4, configTemplate);
 }
