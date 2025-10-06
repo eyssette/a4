@@ -151,6 +151,10 @@ table {
 	table-layout: fixed;
 }
 
+body > table:nth-of-type(1) {
+	margin-top: 0em;
+}
+
 td,
 th {
 	border: 1px solid rgb(190, 190, 190);
