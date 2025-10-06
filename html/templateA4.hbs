@@ -62,10 +62,10 @@
 		{{/if}}
 		const isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
 		if(nPages>1 && isFirefox){
-				const styleElement = document.createElement("style");
+				const styleElementInitialContent = document.createElement("style");
 				let adjustCSSinitialContent = `padding-top: calc(${margesY} + 10px);padding-bottom: ${margesY};`
-				styleElement.textContent = "@media print{.initialContent{break-inside:avoid-column;break-before:column;"+adjustCSSinitialContent+"}}";
-				document.head.appendChild(styleElement);
+				styleElementInitialContent.textContent = "@media print{.initialContent{break-inside:avoid-column;break-before:column;"+adjustCSSinitialContent+"}}";
+				document.head.appendChild(styleElementInitialContent);
 		}
 		{{#if landscape}}
 			const maxHeight = (a4WidthInpixels * nPages) - ((nPages-1)*20);
@@ -74,6 +74,9 @@
 		{{/if}}
 
 		function adjustFontSize() {
+			if(document.querySelector("#cssViewMultipages") && styleElementViewMultipages.textContent) {
+				styleElementViewMultipages.textContent = "";
+			}
 		const minFontSize = 6; // px - limite inférieure
 		const maxFontSize = 150; // px - limite supérieure
 		const tolerance = 5; // px de tolérance sur la hauteur
@@ -125,6 +128,16 @@
 			{{#if openInNewWindow}}
 				setTimeout(() => window.print(), 300);
 			{{else}}
+				if (nPages > 1)  {
+					const styleElementViewMultipages = document.querySelector("#cssViewMultipages") || document.createElement("style");
+					styleElementViewMultipages.id = "cssViewMultipages";
+					{{#if landscape}}
+						styleElementViewMultipages.textContent = "@media screen {body{height:21cm;margin-left:5px;margin-top:5px;}}";
+					{{else}}
+						styleElementViewMultipages.textContent = "@media screen {body{height:29.7cm;margin-left:5px;margin-top:5px}}";
+					{{/if}}
+					document.head.appendChild(styleElementViewMultipages);
+				}
 				document.body.style.visibility = "visible";
 			{{/if}}
 		}
