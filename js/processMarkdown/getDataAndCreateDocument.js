@@ -29,6 +29,11 @@ export function getDataAndCreateDocument(templateA4, md) {
 		: "";
 	// On sanitize la source en Markdown
 	mdWithoutYaml = purify.sanitize(mdWithoutYaml, { ADD_ATTR: ["markdown"] });
+	// Le processus de sanitization a supprimé les blockquotes
+	// On les rétablit en remplaçant les "&gt; " en début de ligne par "> "
+	mdWithoutYaml = mdWithoutYaml.replace(/^(&gt;\s?)+/gm, (match) => {
+		return match.replace(/&gt;/g, ">"); // chaque &gt; devient >
+	});
 	let htmlContent = markdownToHTML(mdWithoutYaml);
 	htmlContent = htmlContent.replaceAll(" !important", "!important");
 	htmlContent = typographyNonBreakingSpaces(htmlContent);
