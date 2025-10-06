@@ -11,8 +11,8 @@
 			body { padding-left:{{{margesX}}}; padding-right:{{{margesX}}};}@media print{ @page { padding-left: {{{margesX}}}!important; padding-right: {{{margesX}}}!important; } }
 		{{/if}}
 		{{#if margesY}}
-			body { padding-top: calc({{{margesY}}} + 10px); padding-bottom: {{{margesY}}}; }
-			@media print { @page { padding-top: calc({{{margesY}}} + 10px); padding-bottom: {{{margesY}}}; } }
+			body { padding-top: {{{margesY}}}; padding-bottom: {{{margesY}}}; }
+			@media print { @page { padding-top: {{{margesY}}}; padding-bottom: {{{margesY}}}; } }
 		{{/if}}
 		{{#if columns}}
 			body { column-count: {{{columns}}}; }
