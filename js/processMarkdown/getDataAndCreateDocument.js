@@ -28,7 +28,21 @@ export function getDataAndCreateDocument(templateA4, md) {
 		? titleMarkdownMatch[0].trim().replace("# ", "").replaceAll(" ", "_")
 		: "";
 	// On sanitize la source en Markdown
-	mdWithoutYaml = purify.sanitize(mdWithoutYaml, { ADD_ATTR: ["markdown"] });
+	let purified = purify.sanitize(mdWithoutYaml, {
+		ADD_ATTR: ["markdown"],
+	});
+
+	// Mais s'il y a une balise style au début du document, DomPurify l'a fait sauté
+	// On vérifie donc qu'il y a bien le même nombre de balises style dans la version sanitized du Markdown
+	const countStyles = (str) =>
+		(str.match(/<style\b[^>]*>[\s\S]*?<\/style>/gi) || []).length;
+	if (countStyles(purified) < countStyles(mdWithoutYaml)) {
+		// Si la première balise style a été supprimée : on la rajoute.
+		const firstStyle = mdWithoutYaml.match(/<style[^>]*>[\s\S]*?<\/style>/i);
+		if (firstStyle) purified = firstStyle[0] + purified;
+	}
+	mdWithoutYaml = purified;
+
 	// Le processus de sanitization a supprimé les blockquotes
 	// On les rétablit en remplaçant les "&gt; " en début de ligne par "> "
 	mdWithoutYaml = mdWithoutYaml.replace(/^(&gt;\s?)+/gm, (match) => {
