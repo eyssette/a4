@@ -207,5 +207,7 @@ caption {
 
 	body {
 		margin: auto;
+		-webkit-print-color-adjust: exact !important;
+		print-color-adjust: exact !important;
 	}
 }
