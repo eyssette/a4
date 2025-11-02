@@ -127,7 +127,9 @@
 		function finalize() {
 			document.body.style.fontSize = bestFit + "px";
 			{{#if openInNewWindow}}
-				setTimeout(() => window.print(), 300);
+				if({{print}}) {
+					setTimeout(() => window.print(), 300);
+				}
 			{{else}}
 				if (nPages > 1)  {
 					const styleElementViewMultipages = document.querySelector("#cssViewMultipages") || document.createElement("style");

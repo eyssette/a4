@@ -31,6 +31,7 @@ margesY: 20px
 paysage: true
 copies: 2
 maths: true
+print: false
 css: URL_CSS_externe
 ---
 ```
@@ -41,6 +42,7 @@ css: URL_CSS_externe
 - pour une impression en format paysage, on met `paysage: true`
 - pour recopier plusieurs fois le contenu du document (par exemple pour mettre deux fois le même contenu sur une page A4 pour ensuite découper sa page et distribuer du A5), il faut indiquer le nombre de copies ainsi : `copies: 2` pour deux copies.
 - `maths: true` permet d'écrire des formules mathématiques avec la syntaxe `$FORMULE$` ou `$$FORMULE$$`. Si la formule est trop longue, la mise en page risque cependant d'être perturbée et il faudra la retoucher manuellement.
+- `print: false` : permet de désactiver l'impression automatique du document (utile si on veut faire des tests de styles CSS avant d'imprimer)
 - `css: URL_CSS_externe` permet de charger une feuille de style externe pour modifier l'apparence de sa page.
 
 

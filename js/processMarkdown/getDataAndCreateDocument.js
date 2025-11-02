@@ -72,6 +72,7 @@ export function getDataAndCreateDocument(templateA4, md) {
 	const marginsY = yaml && yaml.margesY ? yaml.margesY : "10px";
 	const columns = yaml && yaml.colonnes ? yaml.colonnes : 3;
 	const customStyles = yaml && yaml.style ? yaml.style : "";
+	const print = yaml && yaml.print === false ? false : true;
 	const spaceBetweenColumns =
 		yaml && yaml.espacementColonnes ? yaml.espacementColonnes : "30px";
 	let configTemplate = {
@@ -90,6 +91,7 @@ export function getDataAndCreateDocument(templateA4, md) {
 		css: externalCSS,
 		openInNewWindow: openInNewWindow,
 		customStyles: customStyles,
+		print: print,
 	};
 	if (yaml && yaml.pages) {
 		const heightPages = yaml.paysage ? 21 : 29.7;

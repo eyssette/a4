@@ -7,5 +7,6 @@ paysage: true
 margesX: 10px
 margesY: 10px
 maths: false
+print: true
 ---
 <!-- Copiez-collez votre contenu en Markdown ci-dessous -->
