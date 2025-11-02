@@ -19,13 +19,11 @@ const highlightCode = (editor) => {
 
 	// Coloration syntaxique pour le texte en gras
 	code = code.replace(
-		/\*\*(\w.*?)\*\*/g,
+		/\*\*(.*?)\*\*/g,
 		'<span class="markdownBold">**$1**</span>',
 	);
-	code = code.replace(
-		/__(\w.*?)__/g,
-		'<span class="markdownBold">__$1__</span>',
-	);
+	code = code.replace(/__(.*?)__/g, '<span class="markdownBold">__$1__</span>');
+
 	// Coloration syntaxique pour le texte en italique
 	code = code.replace(
 		/(?<!\*)\*(\w.*?)\*(?!\*)/g,
@@ -35,6 +33,13 @@ const highlightCode = (editor) => {
 		/(?<!_)_(\w.*?)_(?!_)/g,
 		'<span class="markdownItalic">_$1_</span>',
 	);
+
+	// Coloration syntaxique pour le texte souligné
+	code = code.replace(
+		/\+\+(.*?)\+\+/g,
+		'<span class="markdownUnderline">++$1++</span>',
+	);
+
 	// Coloration syntaxique pour les listes
 	code = code.replace(
 		/^(\s*)([-*]|\d+\.)(\s)/gm,
@@ -48,8 +53,47 @@ const highlightCode = (editor) => {
 
 	// Coloration syntaxique pour les tags html
 	code = code.replace(
-		/(&lt;.*?&gt;)(.*?)(&lt;.*?&gt;)/g,
-		'<span class="markdownHTMLtag">$1</span><span class="markdownHTMLtagContent">$2</span><span class="markdownHTMLtag">$3</span>',
+		/(&lt;([A-Za-z0-9:-]+)(?:\s[^&]*?)?&gt;)([\s\S]*?)(&lt;\/\2&gt;)/gm,
+		function (match, openTag, tagName, inner, closeTag) {
+			const tag = tagName.toLowerCase();
+
+			if (tag === "style") {
+				// Mise en évidence des sélecteurs CSS
+				const styledInner = inner.replace(
+					/^([^{]+)(?=\s*\{)/gm,
+					(match, selector) =>
+						`<span class="markdownHTMLcssSelector">${selector}</span>`,
+				);
+				return (
+					'<span class="markdownHTMLtag">' +
+					openTag +
+					"</span>" +
+					styledInner +
+					'<span class="markdownHTMLtag">' +
+					closeTag +
+					"</span>"
+				);
+			}
+
+			// Cas général
+			return (
+				'<span class="markdownHTMLtag">' +
+				openTag +
+				"</span>" +
+				'<span class="markdownHTMLtagContent">' +
+				inner +
+				"</span>" +
+				'<span class="markdownHTMLtag">' +
+				closeTag +
+				"</span>"
+			);
+		},
+	);
+
+	// Coloration syntaxique pour les admonitions
+	code = code.replace(
+		/:::(\s*[\s\S]*?):::/gm,
+		'<span class="markdownHTMLadmonition">:::$1:::</span>',
 	);
 
 	// Coloration syntaxique pour les commentaires html
@@ -73,8 +117,8 @@ const highlightCode = (editor) => {
 const options = {
 	addClosing: false,
 	spellCheck: true,
-	preserveIdent: false,
-	tab: "\t",
+	preserveIdent: true,
+	tab: "   ",
 };
 
 export let editor;

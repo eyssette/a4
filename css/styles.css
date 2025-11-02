@@ -89,59 +89,107 @@ a {
 	color: inherit;
 }
 
+/* 
+COLORATION SYNTAXIQUE DANS L'ÉDITEUR
+ */
+
+/* Titres */
 .markdownTitles {
-	font-size: 1.1em;
+	font-family: "Segoe UI", Roboto, sans-serif;
+	line-height: 1.4;
+	margin: 0.4em 0;
 }
 
 .markdownTitles.h1 {
-	color: darkred;
-	font-size: 1.2em;
-	font-weight: bold;
+	color: #b30000;
+	font-size: 1.35em;
+	font-weight: 700;
 }
+
 .markdownTitles.h2 {
-	color: darkblue;
-	font-weight: bold;
+	color: #0047ab;
+	font-size: 1.25em;
+	font-weight: 600;
+	padding-bottom: 0.2em;
 }
 
 .markdownTitles.h3 {
-	font-weight: bold;
-	font-size: 1em;
+	color: #222;
+	font-size: 1.1em;
+	font-weight: 600;
 }
 
 .markdownTitles.h4 {
-	color: rgb(72, 0, 140);
-	font-size: 0.9em;
+	color: #520a7b;
+	font-size: 1em;
+	font-weight: 500;
 }
 
+/* Mise en forme */
 .markdownBold {
-	font-weight: bold;
+	font-weight: 700;
 }
 .markdownItalic {
 	font-style: italic;
 }
-.markdownLists {
-	color: darkblue;
-	font-weight: bold;
-}
-.markdownLinksURL {
-	color: blue;
+.markdownUnderline {
+	text-decoration: underline;
 }
 
+/* Listes */
+.markdownLists {
+	color: #003366;
+	font-weight: 600;
+}
+
+/* Liens */
+.markdownLinksURL {
+	color: #0066cc;
+	text-decoration: none;
+}
+.markdownLinksURL:hover {
+	text-decoration: underline;
+}
+
+/* Admonitions */
+.markdownHTMLadmonition {
+	border: 1px solid rgb(0 91 176);
+	display: block;
+	padding: 0.5em;
+	margin: 1em;
+}
+
+/* Balises HTML */
 .markdownHTMLtag {
 	color: #a201a7;
+	opacity: 0.85;
+	font-weight: 500;
 }
-.markdownHTMLtag,
+
 .markdownHTMLtagContent {
-	font-weight: normal;
+	color: #036363;
 }
 
+/* Coloration des sélecteurs CSS dans les balises <style> */
+.markdownHTMLcssSelector {
+	color: #036363;
+	font-style: italic;
+}
+
+/* Commentaires */
 .markdownHTMLcomment {
-	color: #666;
+	color: #777;
+	font-style: italic;
+	opacity: 0.8;
 }
 
+/* Séparateurs et YAML */
 .markdownSeparator {
-	color: darkred;
+	color: #b30000;
+	opacity: 0.9;
 }
+
 .markdownYAML {
-	color: darkgreen;
+	color: #006400;
+	font-style: italic;
 }
