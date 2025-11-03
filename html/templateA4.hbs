@@ -74,6 +74,8 @@
 			const maxHeight = (a4HeightInpixels * nPages) - ((nPages-1)*20);
 		{{/if}}
 
+		let firstTime = true;
+
 		function adjustFontSize() {
 			if(document.querySelector("#cssViewMultipages") && styleElementViewMultipages.textContent) {
 				styleElementViewMultipages.textContent = "";
@@ -127,8 +129,9 @@
 		function finalize() {
 			document.body.style.fontSize = bestFit + "px";
 			{{#if openInNewWindow}}
-				if({{print}}) {
+				if({{print}} && firstTime) {
 					setTimeout(() => window.print(), 300);
+					firstTime = false;
 				}
 			{{else}}
 				if (nPages > 1)  {
