@@ -27,9 +27,6 @@
 		{{#if heightPages}}
 			@media print {
 				body { height: {{{heightPages}}}; }
-				body * { font-size: {{{adjustFontSizeHeightPages}}}; }
-				body h1 { font-size: 1.2em !important; }
-				body h2 { font-size: 1.05em !important; }
 			}
 		{{/if}}
 		{{customStyles}}
@@ -61,13 +58,6 @@
 		{{else}}
 			const nPages = 1;
 		{{/if}}
-		const isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
-		if(nPages>1 && isFirefox){
-				const styleElementInitialContent = document.createElement("style");
-				let adjustCSSinitialContent = `padding-top: calc(${margesY} + 10px);padding-bottom: ${margesY};`
-				styleElementInitialContent.textContent = "@media print{.initialContent{break-inside:avoid-column;break-before:column;"+adjustCSSinitialContent+"}}";
-				document.head.appendChild(styleElementInitialContent);
-		}
 		{{#if landscape}}
 			const maxHeight = (a4WidthInpixels * nPages) - ((nPages-1)*20);
 		{{else}}
