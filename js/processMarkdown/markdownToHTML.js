@@ -186,7 +186,6 @@ function nestedLists(md) {
 }
 
 export function markdownToHTML(text) {
-	text = text.replaceAll("\n\n|", "|");
 	text = fixImageDimensionsCodiMD(text);
 	text = markdownInDiv(text);
 	text = nestedLists(text);
