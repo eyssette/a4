@@ -4,8 +4,8 @@ colonnes: 3
 espacementColonnes: 30px
 copies: 1
 paysage: true
-margesX: 10px
-margesY: 10px
+margesX: 20px
+margesY: 20px
 maths: false
 print: true
 ---
