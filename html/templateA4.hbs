@@ -39,7 +39,7 @@
 		{{/if}}
 	</head>
 
-	{{#if openInNewWindow}}
+	{{#if openFromEditor}}
 		<body>
 	{{else}}
 		<body style="visibility:hidden;">
@@ -118,7 +118,7 @@
 
 		function finalize() {
 			document.body.style.fontSize = bestFit + "px";
-			{{#if openInNewWindow}}
+			{{#if openFromEditor}}
 				if({{print}} && firstTime) {
 					setTimeout(() => window.print(), 300);
 					firstTime = false;
@@ -140,14 +140,29 @@
 
 		step();
 		}
-
-		window.addEventListener("load", () => {
-			if (window.MathJax) {
-				MathJax.startup.promise.then(adjustFontSize);
-			} else {
-				adjustFontSize();
-			}
-		});
+		{{#if maths}}
+			// On attend d'abord que MathJax ait fini de charger, avec une boucle de vérification toutes les secondes et un timeout de 30 secondes pour éviter de boucler indéfiniment
+			const maxWaitTime = 30000; // 30 secondes
+			const intervalTime = 1000; // 1 seconde
+			let waitedTime = 0;
+			const mathJaxInterval = setInterval(() => {
+				if (window.MathJax && window.MathJax.typesetPromise) {
+					clearInterval(mathJaxInterval);
+					MathJax.startup.promise.then(adjustFontSize);
+				} else {
+					waitedTime += intervalTime;
+					if (waitedTime >= maxWaitTime) {
+						clearInterval(mathJaxInterval);
+						console.warn("MathJax n'a pas chargé après 30 secondes, on continue sans ajuster la taille de la police.");
+						adjustFontSize();
+					}
+				}
+			}, intervalTime);
+		{{else}}
+			adjustFontSize();
+		{{/if}}
+			
+		
 		window.addEventListener("resize", adjustFontSize);
 	</script>
 	</body>

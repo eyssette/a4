@@ -8,7 +8,8 @@ import purify from "../externals/dompurify";
 
 export function getDataAndCreateDocument(templateA4, md) {
 	const isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
-	const openInNewWindow = md ? false : true;
+	const isRaw = new URLSearchParams(window.location.search).has("raw");
+	const openFromEditor = isRaw ? true : false;
 	md = md ? md : document.getElementById("editor").textContent;
 	const yamlRegex = /^---\n([\s\S]*?)\n---\n/;
 	const match = md.match(yamlRegex);
@@ -32,7 +33,7 @@ export function getDataAndCreateDocument(templateA4, md) {
 		ADD_ATTR: ["markdown"],
 	});
 
-	// Mais s'il y a une balise style au début du document, DomPurify l'a fait sauté
+	// Mais s'il y a une balise style au début du document, DomPurify l'a supprimé.
 	// On vérifie donc qu'il y a bien le même nombre de balises style dans la version sanitized du Markdown
 	const countStyles = (str) =>
 		(str.match(/<style\b[^>]*>[\s\S]*?<\/style>/gi) || []).length;
@@ -89,7 +90,7 @@ export function getDataAndCreateDocument(templateA4, md) {
 		columns: columns,
 		spaceBetweenColumns: spaceBetweenColumns,
 		css: externalCSS,
-		openInNewWindow: openInNewWindow,
+		openFromEditor: openFromEditor,
 		customStyles: customStyles,
 		print: print,
 	};
@@ -98,5 +99,5 @@ export function getDataAndCreateDocument(templateA4, md) {
 		configTemplate.heightPages = heightPages * yaml.pages + "cm";
 		configTemplate.adjustFontSizeHeightPages = "1em";
 	}
-	getTemplateAndCreateDocument(templateA4, configTemplate, openInNewWindow);
+	getTemplateAndCreateDocument(templateA4, configTemplate);
 }

@@ -1,23 +1,21 @@
 import Handlebars from "../externals/handlebars.js";
 
-export function getTemplateAndCreateDocument(
-	srcTemplate,
-	configTemplate,
-	openInNewWindow,
-) {
+export function getTemplateAndCreateDocument(srcTemplate, configTemplate) {
 	//const tempSrc = "https://hebdo.framapad.org/p/5jt64q324p-a9nq/export/txt";
 	const compileTemplate = Handlebars.compile(srcTemplate);
 	const a4html = compileTemplate(configTemplate);
 
-	// Créer un blob HTML et affiche ce contenu
-	const blob = new Blob([a4html], { type: "text/html" });
-	const url = URL.createObjectURL(blob);
-	if (openInNewWindow) {
-		window.open(url, "_blank");
-	} else {
-		window.location.href = url;
-	}
+	// On remplace le HTML de la page par le contenu du template compilé
+	document.documentElement.innerHTML = a4html;
 
-	// Libére la mémoire après usage
-	setTimeout(() => URL.revokeObjectURL(url), 10000);
+	// Les scripts du template compilé ne sont pas exécutés automatiquement. Il faut les réinsérer dans le DOM pour qu'ils s'exécutent.
+	const scripts = document.querySelectorAll("script");
+	scripts.forEach((oldScript) => {
+		const newScript = document.createElement("script");
+		Array.from(oldScript.attributes).forEach((attr) =>
+			newScript.setAttribute(attr.name, attr.value),
+		);
+		newScript.textContent = oldScript.textContent;
+		oldScript.parentNode.replaceChild(newScript, oldScript);
+	});
 }
