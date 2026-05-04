@@ -141,9 +141,9 @@
 		step();
 		}
 		{{#if maths}}
-			// On attend d'abord que MathJax ait fini de charger, avec une boucle de vérification toutes les secondes et un timeout de 30 secondes pour éviter de boucler indéfiniment
-			const maxWaitTime = 30000; // 30 secondes
-			const intervalTime = 1000; // 1 seconde
+			// On attend d'abord que MathJax ait fini de charger, avec un timeout de 6 secondes pour éviter de boucler indéfiniment
+			const maxWaitTime = 6000;
+			const intervalTime = 100;
 			let waitedTime = 0;
 			const mathJaxInterval = setInterval(() => {
 				if (window.MathJax && window.MathJax.typesetPromise) {
@@ -153,7 +153,7 @@
 					waitedTime += intervalTime;
 					if (waitedTime >= maxWaitTime) {
 						clearInterval(mathJaxInterval);
-						console.warn("MathJax n'a pas chargé après 30 secondes, on continue sans ajuster la taille de la police.");
+						console.warn("MathJax n'a pas chargé après 6 secondes");
 						adjustFontSize();
 					}
 				}
