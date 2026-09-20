@@ -24,23 +24,25 @@ Voici un exemple avec tous ces paramètres (on n'est pas obligé de tous les uti
 ```yaml
 ---
 pages: 1
-colonnes: 2
-espacementColonnes: 20px
+colonnes: 3
+espacementColonnes: 30px
+copies: 1
+paysage: true
 margesX: 20px
 margesY: 20px
-paysage: true
-copies: 2
-maths: true
-print: false
+align: left
+maths: false
+print: true
 css: URL_CSS_externe
 ---
 ```
 
 - `pages` et `colonnes` indiquent respectivement le nombre de pages et de colonnes
-- on peut définir l'espacement en pixels entre les colonnes : `espacementColonnes: 30px`
-- `margesX` et `margesY` définissent les marges à gauche et à droite (pour `margesX`), en haut et en bas (pour `margesY`)
-- pour une impression en format paysage, on met `paysage: true`
+- on définit l'espacement en pixels entre les colonnes : `espacementColonnes: 30px`
 - pour recopier plusieurs fois le contenu du document (par exemple pour mettre deux fois le même contenu sur une page A4 pour ensuite découper sa page et distribuer du A5), il faut indiquer le nombre de copies ainsi : `copies: 2` pour deux copies.
+- on définit le format de la page, en choisissant `paysage: true`(format paysage) ou `paysage: false` (format portrait)
+- `margesX` et `margesY` définissent les marges à gauche et à droite (pour `margesX`), en haut et en bas (pour `margesY`)
+- `align: left` ou `align: justify` permet de choisir l'alignement du texte par défaut(à gauche ou justifié)
 - `maths: true` permet d'écrire des formules mathématiques avec la syntaxe `$FORMULE$` ou `$$FORMULE$$`. Si la formule est trop longue, la mise en page risque cependant d'être perturbée et il faudra la retoucher manuellement.
 - `print: false` : permet de désactiver l'impression automatique du document (utile si on veut faire des tests de styles CSS avant d'imprimer)
 - `css: URL_CSS_externe` permet de charger une feuille de style externe pour modifier l'apparence de sa page.
