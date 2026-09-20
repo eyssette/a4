@@ -76,6 +76,7 @@ export function getDataAndCreateDocument(templateA4, md) {
 	const print = yaml && yaml.print === false ? false : true;
 	const spaceBetweenColumns =
 		yaml && yaml.espacementColonnes ? yaml.espacementColonnes : "30px";
+	const align = yaml && yaml.align ? yaml.align : "left"; 
 	let configTemplate = {
 		templateCSS: templateCSS,
 		title: title,
@@ -93,6 +94,7 @@ export function getDataAndCreateDocument(templateA4, md) {
 		openFromEditor: openFromEditor,
 		customStyles: customStyles,
 		print: print,
+		align: align,
 	};
 	if (yaml && yaml.pages) {
 		const heightPages = yaml.paysage ? 21 : 29.7;

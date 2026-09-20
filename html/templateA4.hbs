@@ -7,6 +7,9 @@
 		<meta name="description" content="Document au format A4 créé avec A4" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<style>{{{templateCSS}}}
+		{{#if align}}
+			body { text-align: {{{align}}}; }
+		{{/if}}
 		{{#if margesX}}
 			body { padding-left:{{{margesX}}}; padding-right:{{{margesX}}};}@media print{ @page { padding-left: {{{margesX}}}!important; padding-right: {{{margesX}}}!important; } }
 		{{/if}}

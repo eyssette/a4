@@ -6,6 +6,7 @@ copies: 1
 paysage: true
 margesX: 20px
 margesY: 20px
+align: left
 maths: false
 print: true
 ---
