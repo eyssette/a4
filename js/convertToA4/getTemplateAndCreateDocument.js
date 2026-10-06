@@ -5,8 +5,9 @@ export function getTemplateAndCreateDocument(srcTemplate, configTemplate) {
 	const compileTemplate = Handlebars.compile(srcTemplate);
 	const a4html = compileTemplate(configTemplate);
 
-	// On remplace le HTML de la page par le contenu du template compilé
-	document.documentElement.innerHTML = a4html;
+	// On remplace le document courant par le document généré
+	const parsedDocument = new DOMParser().parseFromString(a4html, "text/html");
+	document.replaceChild(parsedDocument.documentElement, document.documentElement);
 
 	// Les scripts du template compilé ne sont pas exécutés automatiquement. Il faut les réinsérer dans le DOM pour qu'ils s'exécutent.
 	const scripts = document.querySelectorAll("script");

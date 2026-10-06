@@ -32,6 +32,7 @@ margesX: 20px
 margesY: 20px
 align: left
 maths: false
+trous: true
 print: true
 css: URL_CSS_externe
 ---
@@ -44,6 +45,7 @@ css: URL_CSS_externe
 - `margesX` et `margesY` définissent les marges à gauche et à droite (pour `margesX`), en haut et en bas (pour `margesY`)
 - `align: left` ou `align: justify` permet de choisir l'alignement du texte par défaut(à gauche ou justifié)
 - `maths: true` permet d'écrire des formules mathématiques avec la syntaxe `$FORMULE$` ou `$$FORMULE$$`. Si la formule est trop longue, la mise en page risque cependant d'être perturbée et il faudra la retoucher manuellement.
+- `trous: true` permet de cacher les termes que l'on met entre `{{` et `}}` (par exemple `{{mot à cacher}}`) pour créer des exercices à trous. Pour imprimer le corrigé et afficher les termes cachés, il faut mettre `trous: false`.
 - `print: false` : permet de désactiver l'impression automatique du document (utile si on veut faire des tests de styles CSS avant d'imprimer)
 - `css: URL_CSS_externe` permet de charger une feuille de style externe pour modifier l'apparence de sa page.
 

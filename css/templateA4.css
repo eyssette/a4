@@ -196,6 +196,34 @@ caption {
 	padding: 10px;
 }
 
+.hideClozeAnswer .cloze-answer {
+	display: none;
+}
+
+.hideClozeAnswer .cloze {
+	color: #d3d3d3;
+	display: inline-block;
+	margin-top: 0.75em;
+	max-width: stretch;
+	max-width: -moz-available;
+}
+
+.hideClozeAnswer .cloze .punctuation {
+	color: #777;
+}
+
+.showClozeAnswer .cloze {
+	display:none;
+}
+
+.showClozeAnswer .cloze-answer {
+	background-color: #EEE;
+}
+
+.hideClozeAnswer p:has(.cloze), .hideClozeAnswer li:has(.cloze), .hideClozeAnswer td:has(.cloze) {
+	line-height: 1.5em;
+}
+
 @media print {
 	@page {
 		size: A4;

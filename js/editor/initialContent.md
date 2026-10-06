@@ -8,6 +8,7 @@ margesX: 20px
 margesY: 20px
 align: left
 maths: false
+trous: true
 print: true
 ---
 <!-- Copiez-collez votre contenu en Markdown ci-dessous -->

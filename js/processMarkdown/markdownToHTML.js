@@ -151,6 +151,40 @@ function showdownExtensionFootnotes() {
 	];
 }
 
+// Gestion des éléments cachés dans le markdown (pour faire des textes à trous)
+// Syntaxe : {{texte à cacher}}
+// Chaque caractère du texte à cacher est remplacé par un underscore "_" dans le HTML
+// Et le tout est mis dans une balise <span> avec la classe "hidden"
+function showdownExtensionHidden() {
+	return [
+		{
+			type: "output",
+			filter: (text) => {
+				// On met d'abord les signes de ponctuation qui sont juste après un signe }} pour les intégrer dans le texte caché
+				text = text.replaceAll(/\}\}(\s*[\.,;:!\?])/g, (match, textToHide) => {
+					return `${textToHide}}}`;
+				});
+				text = text.replaceAll(/\{\{(.*?)\}\}/g, (match, textToHide) => {
+					// On remplace chaque caractère du texte à cacher par un underscore "_"
+					// Sauf si c'est un signe de ponctuation à la fin du texte, auquel cas on le laisse tel quel
+					const placeholder = textToHide
+						.split("")
+						.map((char, index) => {
+							if (index === textToHide.length - 1 && /[.,;:!?]/.test(char)) {
+								return `<span class="punctuation">${char}</span>`;
+							}
+							return "_ _ ";
+						})
+						.join("");
+					const sanitizedTextToHide = textToHide.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+					return `<span class="cloze">${placeholder}</span><span class="cloze-answer">${sanitizedTextToHide}</span>`;
+				});
+				return text;
+			},
+		},
+	];
+}
+
 // Gestion de la conversion du markdown en HTML
 const converter = new Showdown.Converter({
 	tasklists: true,
@@ -165,6 +199,7 @@ const converter = new Showdown.Converter({
 		showdownExtensionUnderline,
 		showdownExtensionHighlight,
 		showdownExtensionFootnotes,
+		showdownExtensionHidden,
 	],
 });
 
